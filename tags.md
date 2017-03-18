@@ -2,6 +2,7 @@
 layout: page
 title: Tags
 description: Browse site by tags
+permalink: /tags.html
 ---
 
 <!-- Get the tag name for every tag on the site and set them
