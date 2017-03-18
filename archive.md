@@ -2,6 +2,7 @@
 layout: page
 title: Archive
 description: bacardi55's blog archive page. List of articles and posts.
+permalink: /archive.html
 ---
 
 {% for post in site.posts %}

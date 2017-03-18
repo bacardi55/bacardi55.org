@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Kalliopé
+permalink: /kalliope.html
 ---
 
 This page regroups information about [kalliope project](http://github.com/kalliope-project/kalliope).
