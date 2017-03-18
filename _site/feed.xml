@@ -1,0 +1,1285 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-18T05:31:38+01:00</updated><id>http://localhost:4000/</id><title type="html">Bacardi55’s random notes</title><subtitle>This is a small place on the Internet where I talk about stuff…
+</subtitle><author><name>Bacardi55</name></author><entry><title type="html">Managing a shopping list with Kalliope</title><link href="http://localhost:4000/2017/03/16/managing-a-shopping-list-with-kalliope.html" rel="alternate" type="text/html" title="Managing a shopping list with Kalliope" /><published>2017-03-16T00:00:00+01:00</published><updated>2017-03-16T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/16/managing-a-shopping-list-with-kalliope</id><content type="html" xml:base="http://localhost:4000/2017/03/16/managing-a-shopping-list-with-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;This neuron allow &lt;a href=&quot;http://github.com/kalliope-project/kalliope&quot;&gt;Kalliope&lt;/a&gt; to manage todolists. It leverages the &lt;a href=&quot;http://todotxt.com&quot;&gt;todotxt&lt;/a&gt; methodology and rules.&lt;/p&gt;
+
+&lt;p&gt;With the current state of the neuron, you’ll be able to list (and filter), add and delete tasks in your todolists.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-todotxt-&quot;&gt;Why todotxt ?&lt;/h2&gt;
+
+&lt;h3 id=&quot;ways-of-managing-a-todolist-with-kalliope&quot;&gt;Ways of managing a todolist with Kalliope:&lt;/h3&gt;
+
+&lt;p&gt;As of no todolist neuron exists so far, I needed to created this feature from scratch. I had the following possibilities:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Saas “fashion” offering like &lt;a href=&quot;&quot;&gt;remember the milk&lt;/a&gt;, &lt;a href=&quot;https://keep.google.com&quot;&gt;Google keep&lt;/a&gt;, &lt;a href=&quot;https://calendar.google.com&quot;&gt;Google calendar tasks&lt;/a&gt; or even &lt;a href=&quot;https://evernote.com&quot;&gt;evernote&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Local todolist application like &lt;a href=&quot;http://todolist.site/&quot;&gt;Todolist&lt;/a&gt; or &lt;a href=&quot;https://taskwarrior.org/&quot;&gt;Taskwarrior&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Self hosted todolist server app like taskwarrior &lt;a href=&quot;https://taskwarrior.org/docs/taskserver/setup.html&quot;&gt;taskwarrior server&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Simple text file&lt;/li&gt;
+  &lt;li&gt;I’m sure a lot of other way&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All of them have advantages and drawbacks, but I had personal requirements:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Open Source software (what else…)&lt;/li&gt;
+  &lt;li&gt;Data privacy (keeping my todolist mine)&lt;/li&gt;
+  &lt;li&gt;Simplicity (I won’t manage reporting, diagram and very complex tasks via Kalliope)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-choice&quot;&gt;The choice&lt;/h3&gt;
+
+&lt;p&gt;Looking at the lists of options and requirements above, only 2 options were attractive to me:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Taskwarrior + taskwarrior server: this was my main idea for a long time, as a previous long time user of Taskwarrior. This todolist tool is extremely powerful and can manage all aspects of a todolist as well as creating reports etc. Cli is very complete (and can be complex if you have a lot of arguments / commands) but it for me the “Rolls-Royce” of cli todolist tools. The server setup and a full configuration can takes a bit of time though.&lt;/li&gt;
+  &lt;li&gt;Simple text file: I like the idea but lacked flexibility. It would have meant simple file per todo list (one for groceries, one for reminders, …), but the integration with Kalliope would be simple ass reading/writing a text file. As well, a text file can be read on any devices without a required application being installed. Sharing text file todolists is simple (eg: mail, scp, rsync, … ) But that will be part of another blog post about how I manage my grocery lists via Kalliope.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-solution-todotxt-&quot;&gt;The solution: todotxt !&lt;/h3&gt;
+
+&lt;p&gt;If I had 2 words to describe todotxt, it would be : &lt;strong&gt;simply powerful&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Todotxt is simple concept (not even an software per say) to manage todolists via a single text files, with only a very small set of rules for writing tasks in it. I encourage you to go to &lt;a href=&quot;https://todotxt.com&quot;&gt;their website&lt;/a&gt; and learn about it, it will take you 5 minutes to understand the full concept. You can find the rules set &lt;a href=&quot;https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format&quot;&gt;here&lt;/a&gt; and an example of a &lt;a href=&quot;http://todotxt.com/todo.txt&quot;&gt;todotxt file here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you already use todotxt or like its simplicity, this neuron is for you.&lt;/p&gt;
+
+&lt;p&gt;As well, if you don’t really care about sharing Kalliope’s todolist on the cloud or with your other devices and use other todolist app for your own work/personal todolist, you can of course leverage this neuron as well :)&lt;/p&gt;
+
+&lt;h2 id=&quot;the-neuron&quot;&gt;The neuron&lt;/h2&gt;
+
+&lt;h3 id=&quot;what-it-does&quot;&gt;What it does&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Manage tasks based on todotxt model: priority, project, context, completeness&lt;/li&gt;
+  &lt;li&gt;List / filter items from todotxt files&lt;/li&gt;
+  &lt;li&gt;Add elements to list (with arguments like priority and projects)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-it-could-do-in-future-release&quot;&gt;What it could do in future release&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Get / Delete searched entry&lt;/li&gt;
+  &lt;li&gt;Mark as complete / Update tasks (instead of delete)&lt;/li&gt;
+  &lt;li&gt;Manage multi projects and contexts in order.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;/h3&gt;
+
+&lt;p&gt;Usual Kallipoe way:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;kalliope start install --git-url https://github.com/bacardi55/kalliope-todotxt.git&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;configuration&quot;&gt;Configuration&lt;/h3&gt;
+
+&lt;p&gt;As usual, the &lt;a href=&quot;https://github.com/bacardi55/kalliope-todotxt/blob/master/README.md&quot;&gt;README&lt;/a&gt; is the most up to date documentation about arguments / return values.&lt;/p&gt;
+
+&lt;h4 id=&quot;arguments&quot;&gt;arguments:&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;parameter&lt;/th&gt;
+      &lt;th&gt;required&lt;/th&gt;
+      &lt;th&gt;default&lt;/th&gt;
+      &lt;th&gt;choices&lt;/th&gt;
+      &lt;th&gt;comments&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;action&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;‘get’, ‘add’ or ‘del’&lt;/td&gt;
+      &lt;td&gt;The action to launch&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;todotxt_file&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;String&lt;/td&gt;
+      &lt;td&gt;The path to the todotxt file&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;priority&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;‘A’, ‘B’ or ‘C’&lt;/td&gt;
+      &lt;td&gt;The priority of the task&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;project&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;String&lt;/td&gt;
+      &lt;td&gt;The project of the task&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;context&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;String&lt;/td&gt;
+      &lt;td&gt;The context of the task&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;complete&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt;False&lt;/td&gt;
+      &lt;td&gt;Boolean: False or True&lt;/td&gt;
+      &lt;td&gt;If the task is complete or not&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;content&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;String&lt;/td&gt;
+      &lt;td&gt;The content of the task&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Additional notes:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If action is ‘add’:
+    &lt;ul&gt;
+      &lt;li&gt;Content argument is mandatory&lt;/li&gt;
+      &lt;li&gt;Priority/context/complete/projects will be added in the raw line in text file&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;If action is ‘get’, adding priority / project / context will filter the results (see brain example below)&lt;/li&gt;
+  &lt;li&gt;If action is ‘del’, every tasks that match the given priority/project/context will be deleted.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;return-values&quot;&gt;Return values:&lt;/h4&gt;
+
+&lt;p&gt;Only necessary when the neuron use a template to say something&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;name&lt;/th&gt;
+      &lt;th&gt;description&lt;/th&gt;
+      &lt;th&gt;type&lt;/th&gt;
+      &lt;th&gt;sample&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;action&lt;/td&gt;
+      &lt;td&gt;The action launched&lt;/td&gt;
+      &lt;td&gt;string&lt;/td&gt;
+      &lt;td&gt;‘get’, ‘del’ or ‘add’&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;task_list&lt;/td&gt;
+      &lt;td&gt;list of tasks (for get action only)&lt;/td&gt;
+      &lt;td&gt;list of tasks&lt;/td&gt;
+      &lt;td&gt;[task1, taks2, task3].&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;count&lt;/td&gt;
+      &lt;td&gt;The number of returned element&lt;/td&gt;
+      &lt;td&gt;Integer&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;added_task&lt;/td&gt;
+      &lt;td&gt;string value&lt;/td&gt;
+      &lt;td&gt;Task object¹&lt;/td&gt;
+      &lt;td&gt;Task object¹&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Additional notes:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If action is ‘get’:
+    &lt;ul&gt;
+      &lt;li&gt;Count contains the number of return tasks in tasks_lists&lt;/li&gt;
+      &lt;li&gt;Task_lists contains the list of task object¹&lt;/li&gt;
+      &lt;li&gt;add_task is unset&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;If action is ‘del’:
+    &lt;ul&gt;
+      &lt;li&gt;Count contains the number of deleted tasks&lt;/li&gt;
+      &lt;li&gt;added_task is unset&lt;/li&gt;
+      &lt;li&gt;task_list is unset&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;If action is ‘add’:
+    &lt;ul&gt;
+      &lt;li&gt;Count is unset&lt;/li&gt;
+      &lt;li&gt;added_task contain a Task object¹&lt;/li&gt;
+      &lt;li&gt;task_list is empty&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Task Object:&lt;/strong&gt; The task object contains the following properties:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Task.raw: the raw line representing the task in the todotxt file.&lt;/li&gt;
+  &lt;li&gt;Task.task_id: The task id (number of line)&lt;/li&gt;
+  &lt;li&gt;Task.task: The cleaned text of a text&lt;/li&gt;
+  &lt;li&gt;Task.priority: The priority&lt;/li&gt;
+  &lt;li&gt;Task.project: A list of project name&lt;/li&gt;
+  &lt;li&gt;Task.context = A list of context name&lt;/li&gt;
+  &lt;li&gt;Task.creation_date: Creation date if precised&lt;/li&gt;
+  &lt;li&gt;Task.complete: Is the task complete?&lt;/li&gt;
+  &lt;li&gt;Task.completion_date: Completion date if completed task&lt;/li&gt;
+  &lt;li&gt;Task.due_date: Due date if precised.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can reuse all these properties in &lt;code class=&quot;highlighter-rouge&quot;&gt;template_file&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;file_template&lt;/code&gt; for each task objects (added_task or each element of task_list).&lt;/p&gt;
+
+&lt;h4 id=&quot;brain-examples&quot;&gt;Brain examples&lt;/h4&gt;
+
+&lt;p&gt;Get tasks, no filter.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  - name: &lt;span class=&quot;s2&quot;&gt;&quot;Get-all-tasks&quot;&lt;/span&gt;
+    signals:
+      - order: &lt;span class=&quot;s2&quot;&gt;&quot;Get all my tasks&quot;&lt;/span&gt;
+    neurons:
+      - todotxt:
+          action: &lt;span class=&quot;s2&quot;&gt;&quot;get&quot;&lt;/span&gt;
+          todotxt_file: &lt;span class=&quot;s2&quot;&gt;&quot;resources/neurons/todotxt/samples/todo.txt&quot;&lt;/span&gt;
+          file_template: &lt;span class=&quot;s2&quot;&gt;&quot;templates/en_todotxt.j2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Get tasks with specific filters&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Get-specific-items&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Get&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;my&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;todotxt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;get&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;todotxt_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;resources/neurons/todotxt/samples/todo.txt&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;project&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;A&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;context&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;complete&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;False&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;file_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;templates/en_todotxt.j2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Add item to list&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;add-item-to-super-list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{content}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;todotxt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;add&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;todotxt_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;resources/neurons/todotxt/samples/todo.txt&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;project&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;A&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;context&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;complete&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;False&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;content&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{added_task.task}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;has&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;been&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;added&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{added_task.priority}}&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You could also add arguments with value coming from voice order directly:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;add-item-to-super-list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{content}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{project}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{priority}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{context}}&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;todotxt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;add&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;todotxt_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;resources/neurons/todotxt/samples/todo.txt&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;complete&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;False&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;content&lt;/span&gt;
+              &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;project&quot;&lt;/span&gt;
+              &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;A&quot;&lt;/span&gt;
+              &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;context&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{added_task.task}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;has&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;been&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;added&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{added_task.priority}}&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Remove items that match filters from global list.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;clear-super-list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;todotxt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;del&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;todotxt_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;resources/neurons/todotxt/samples/todo.txt&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;project&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;A&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;context&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;complete&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;False&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{count}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;have&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;been&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;deleted&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;template-examples&quot;&gt;Template examples&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jinja&quot; data-lang=&quot;jinja&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    Your list contains:
+    &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;task_list&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;task.text&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endfor&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    You don't have any item in your list
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or you can simply use the &lt;code class=&quot;highlighter-rouge&quot;&gt;say_template&lt;/code&gt; argument, eg for adding a task:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{added_task.task}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;has&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;been&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;added&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;grocery&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;As usual, the &lt;a href=&quot;https://github.com/bacardi55/kalliope-todotxt/tree/master/samples&quot;&gt;sample directory&lt;/a&gt; contains more example of brains and templates.&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="todotxt" /><summary type="html">Introduction</summary></entry><entry><title type="html">Entering the domotic game</title><link href="http://localhost:4000/2017/03/15/entering-the-domotic-game.html" rel="alternate" type="text/html" title="Entering the domotic game" /><published>2017-03-15T00:00:00+01:00</published><updated>2017-03-15T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/15/entering-the-domotic-game</id><content type="html" xml:base="http://localhost:4000/2017/03/15/entering-the-domotic-game.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;So far, most of the things I do with Kalliope could be considered as not really domitic (maybe more domogeek ^^).&lt;/p&gt;
+
+&lt;p&gt;Indeed, so far I use Kalliope to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Get data from API (&lt;a href=&quot;https://github.com/bacardi55/google-calendar&quot;&gt;Google calendar&lt;/a&gt;, &lt;a href=&quot;https://github.com/bacardi55/kalliope-gmaps&quot;&gt;Google Maps&lt;/a&gt;, &lt;a href=&quot;https://github.com/bacardi55/kalliope-uber&quot;&gt;Uber&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Get &lt;a href=&quot;https://github.com/kalliope-project/kalliope_neuron_rss_reader&quot;&gt;RSS feeds&lt;/a&gt; info (lequipe.fr mainly)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/bacardi55/kalliope-web-scraper&quot;&gt;Scrap web page&lt;/a&gt; to get content (Google news, TV program, Cinema program, joke of the day, …)&lt;/li&gt;
+  &lt;li&gt;Get Kalliope to reminds things using &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/reminder.py&quot;&gt;a script&lt;/a&gt; and the &lt;a href=&quot;https://github.com/bacardi55/kalliope-repeat&quot;&gt;repeat neuron&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/bacardi55/kalliope-mpd&quot;&gt;Play music&lt;/a&gt; via my &lt;a href=&quot;http://mopidy.com/&quot;&gt;mopidy&lt;/a&gt; server&lt;/li&gt;
+  &lt;li&gt;Play video on my &lt;a href=&quot;https://kodi.tv/&quot;&gt;Kodi&lt;/a&gt; server via &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/find-episode.sh&quot;&gt;a script&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The last 2 items could be considered as domotic, but I consider them as media management, but the line is grey :)&lt;/p&gt;
+
+&lt;h2 id=&quot;domotic&quot;&gt;Domotic&lt;/h2&gt;
+
+&lt;h3 id=&quot;what-for&quot;&gt;what for?&lt;/h3&gt;
+
+&lt;p&gt;Usage are legions and I don’t intend to describe all of them here, just the one I’m going to use. Bear in mind than I’m just starting so my knowledge is limited and the devices I have are not numerous :).&lt;/p&gt;
+
+&lt;p&gt;I have several ideas to start with, like managing internal sensors (temp, light, motion detector, …) or managing switches (Lamp, electric plug, …)&lt;/p&gt;
+
+&lt;h3 id=&quot;how&quot;&gt;How:&lt;/h3&gt;
+
+&lt;h4 id=&quot;the-protocol-z-wave&quot;&gt;The protocol: Z-wave&lt;/h4&gt;
+
+&lt;p&gt;But first, I needed to find the basic of all this: How to manage these devices from a central control point. I read online some documentation, about protocol and devices and finally end up choosing device compatible with the z-wave protocol, as there is the openzwave opensource lib that seems to work well. Main issue of Z-wave is that the company behind it are owner of the z-wave chip.&lt;/p&gt;
+
+&lt;p&gt;I let you read online additional info on z-wave if you wish, there are a lot about it.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-main-controller-domoticz&quot;&gt;The main controller: &lt;a href=&quot;https://domoticz.com/&quot;&gt;Domoticz&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;So I ended up buying a usb stick z-wave controller and a z-wave multi sensor (temp/hum, light, motion detection) to start poking at it. But I still needed an app to manage all the z-wave devices.&lt;/p&gt;
+
+&lt;p&gt;For this, 2 solutions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create a neuron that leverage the openzwave python library&lt;/li&gt;
+  &lt;li&gt;Use a tool that manage domotic devices&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I think that the simplest, yet most powerful approach was to choose the 2nd option, and choose a software that was exactly meant to manage domotic device. I could have choose several: &lt;a href=&quot;https://www.jeedom.com&quot;&gt;jeedom&lt;/a&gt;, &lt;a href=&quot;http://www.openhab.org/&quot;&gt;openhab&lt;/a&gt;, &lt;a href=&quot;Home-Assistant.io&quot;&gt;Home-Assistant.io&lt;/a&gt;, …&lt;/p&gt;
+
+&lt;p&gt;I ended up choosing &lt;a href=&quot;https://domoticz.com/&quot;&gt;Domoticz&lt;/a&gt;, very light and powerful app in C++ with a web app and a mobile app. It was very easy to install on an old rpiB+ and to setup my z-wave sensor.&lt;/p&gt;
+
+&lt;p&gt;It also provide &lt;a href=&quot;https://www.domoticz.com/wiki/Domoticz_API/JSON_URL%27s#Retrieve_status_of_specific_device&quot;&gt;APIs&lt;/a&gt; to do a lot of actions so that kalliope could send action :)&lt;/p&gt;
+
+&lt;p&gt;APIs provide options to (non exhaustive, go to their doc page for full API endpoints):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Get device status (and value): Important for me to get metric from sensor&lt;/li&gt;
+  &lt;li&gt;Set on/off on device: I’ll soon have a zwave electrig plug, and I want to be able to switch it on and off via kalliope&lt;/li&gt;
+  &lt;li&gt;Get / Set scene/groups state: Scene and groups are option in domoticz to regroup devices together (group mean all device has same state (on or off) and group state can be change. Scene has only one state, but devices can have different states).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That’s the main I’ll start poking at, in that order!&lt;/p&gt;
+
+&lt;h4 id=&quot;kalliope-integration&quot;&gt;Kalliope integration&lt;/h4&gt;
+
+&lt;h5 id=&quot;pymoticz&quot;&gt;Pymoticz&lt;/h5&gt;
+
+&lt;p&gt;I did find online an &lt;a href=&quot;https://github.com/EirikAskheim/pymoticz/network&quot;&gt;old python code&lt;/a&gt; to manage domoticz. I also found a more recent fork of it &lt;a href=&quot;https://github.com/wackoracoon/pymoticz&quot;&gt;here&lt;/a&gt; that worked well.&lt;/p&gt;
+
+&lt;p&gt;Only issue is that is was forcing the use of http and didn’t allow https. So I &lt;a href=&quot;https://github.com/bacardi55/pymoticz&quot;&gt;forked it&lt;/a&gt; to add https support. There is &lt;a href=&quot;https://github.com/wackoracoon/pymoticz/pull/1&quot;&gt;pull request here&lt;/a&gt; to merge it.&lt;/p&gt;
+
+&lt;h5 id=&quot;kalliope-neuron&quot;&gt;Kalliope Neuron&lt;/h5&gt;
+
+&lt;p&gt;As you would have guess, a neuron is coming up. You can find it in a draft mode &lt;a href=&quot;https://github.com/bacardi55/kalliope-domoticz&quot;&gt;on github&lt;/a&gt;. For now, it is very limited but in development. It does include directly the pymoticz library so no manual addition needed there.&lt;/p&gt;
+
+&lt;p&gt;For now, you can only request data value from a device. So for example, I can retrieve the temperature and the light level from the sensor.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Brain example&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;domoticz-get-temp-living-room&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;living&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;temperature&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;domoticz&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;get_device&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;6&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;ssl_verify&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;False&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Living&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;temperature&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;degrees&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;humidity&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;%&quot;&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;domoticz-get-lux-living-room&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;brightness&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;living&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;room&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;domoticz&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;get_device&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;5&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;ssl_verify&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;False&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Living&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;brightness&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;whats-next&quot;&gt;What’s next&lt;/h2&gt;
+
+&lt;p&gt;As I said above, there are a lot to be able to do: set on/off devices, get / set scenes and groups, … A lot of fun to have marrying Kalliopé and domoticz :)&lt;/p&gt;
+
+&lt;p&gt;Stay tuned!&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="domoticz" /><summary type="html">Introduction</summary></entry><entry><title type="html">Update Linux Clock While Travelling</title><link href="http://localhost:4000/2017/03/07/update-linux-clock-while-travelling.html" rel="alternate" type="text/html" title="Update Linux Clock While Travelling" /><published>2017-03-07T00:00:00+01:00</published><updated>2017-03-07T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/07/update-linux-clock-while-travelling</id><content type="html" xml:base="http://localhost:4000/2017/03/07/update-linux-clock-while-travelling.html">&lt;hr /&gt;
+&lt;p&gt;layout: post&lt;br /&gt;
+title: Update linux clock when travelling&lt;br /&gt;
+subtitle: “”&lt;br /&gt;
+categorie: “tips”&lt;/p&gt;
+
+&lt;p&gt;Cool tool if you often travel and that need to change time/date : &lt;a href=&quot;https://github.com/cdown/tzupdate&quot;&gt;tzupdate&lt;/a&gt;&lt;/p&gt;</content><author><name>Bacardi55</name></author><summary type="html">layout: post title: Update linux clock when travelling subtitle: “” categorie: “tips”</summary></entry><entry><title type="html">Todotxt, a neuron to manage todolist compatible with todotxt format!</title><link href="http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html" rel="alternate" type="text/html" title="Todotxt, a neuron to manage todolist compatible with todotxt format!" /><published>2017-02-28T00:00:00+01:00</published><updated>2017-02-28T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format</id><content type="html" xml:base="http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;As promised in my &lt;a href=&quot;/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html&quot;&gt;todotxt neuron post&lt;/a&gt;, here is a post about how I managed my todolist via &lt;a href=&quot;https://kalliope-project.github.io/&quot;&gt;Kalliope&lt;/a&gt; !&lt;/p&gt;
+
+&lt;p&gt;As it’s compatible with &lt;a href=&quot;http://todotxt.com/&quot;&gt;todotxt&lt;/a&gt; format, you can still use the same file as kalliope to manage your todolists.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;h3 id=&quot;install-the-neuron&quot;&gt;Install the neuron&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;kalliope install --git-url https://github.com/bacardi55/kalliope-todotxt.git&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;configuration&quot;&gt;Configuration&lt;/h3&gt;
+
+&lt;p&gt;First things first, you need a todo file (empty or not) that kalliope will use.&lt;/p&gt;
+
+&lt;p&gt;For example, I created a simple file in my root directory:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;touch ~/todo.txt&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then you need to choose the name of your project so item can be filtered. It will add +project in your todoline (but won’t say it at loud).&lt;/p&gt;
+
+&lt;p&gt;In this example, I’ve choosen &lt;code class=&quot;highlighter-rouge&quot;&gt;grocery&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;add-item&quot;&gt;Add item&lt;/h4&gt;
+
+&lt;p&gt;First thing we need, is to add item to our list. To do so, create a new brain file &lt;code class=&quot;highlighter-rouge&quot;&gt;todotxt.yml&lt;/code&gt; in your brain folder and put:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;add-item-to-grocery-list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;think&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;buying&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{content}}&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;todotxt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;add&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;todotxt_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;~/todo.txt&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;add&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;grocery&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;content&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;added&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{added_task.task}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;grocery&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Here, no need of a template, Kalliope return the item added in the list.&lt;/p&gt;
+
+&lt;p&gt;Now, you should be able to look into the todo.txt file and see the added line. Eg: if I said “think about buying milk”, I’ll have a new line in my todo.txt file like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;milk +grocery&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;list-items&quot;&gt;List items&lt;/h4&gt;
+
+&lt;p&gt;Now that we have added an item, we want to be able to hear them from kalliope before going shopping.&lt;/p&gt;
+
+&lt;p&gt;Add this in your brain file:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Get-grocery-items&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;grocery&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;todotxt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;get&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;todotxt_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;~/todo.txt&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;grocery&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;file_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;templates/grocery.j2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then, create the template file (here &lt;code class=&quot;highlighter-rouge&quot;&gt;templates/grocery.j2&lt;/code&gt;) and add:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jina&quot; data-lang=&quot;jina&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;{% if count &amp;gt; 0 %}
+    Your grocery list contains:
+    {% for task in task_list %}
+        {{ task.text  }}
+    {% endfor %}
+{% else %}
+    You don't have any item in your list
+{% endif %}&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And here we go! You can now go shopping!&lt;/p&gt;
+
+&lt;h4 id=&quot;delete-items&quot;&gt;Delete items&lt;/h4&gt;
+
+&lt;p&gt;Once your shopping is done, you want to empty the list, via Kalliope of course!&lt;/p&gt;
+
+&lt;p&gt;Add this to your brain file:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;clear-shopping-list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Clear&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;shopping&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;todotxt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;del&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;todotxt_file&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;~/todo.txt&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;project&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;grocery&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{count}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;have&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;been&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;deleted&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And voilà!&lt;/p&gt;
+
+&lt;h4 id=&quot;send&quot;&gt;Send&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Wait wait wait, you can’t send it ?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Hmm, I thought about it, but I didn’t thought that it should be done by the todotxt neuron. It’s role is only to manage the text file. Adding a send method would break that rule and make it too customized.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;So… no getting that list on my phone ? I have a bad memory you know…&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Of course you can, and of course I’ll give you the tip :)&lt;/p&gt;
+
+&lt;p&gt;First, I decided to stay simple, no mail server heavy configuration or things like that. You can use sendmail, postfix, ssmtp to send email, this tip should still work.&lt;/p&gt;
+
+&lt;p&gt;For this example, I’m using ssmtp to connect to a remote smtp server (own by me) so no big configuration.&lt;/p&gt;
+
+&lt;p&gt;Just edit the &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/ssmtp/ssmtp.conf&lt;/code&gt; file&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;mail@example.com
+&lt;span class=&quot;nv&quot;&gt;AuthUser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;mail@example.com
+&lt;span class=&quot;nv&quot;&gt;AuthPass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;YourMailPassword
+&lt;span class=&quot;nv&quot;&gt;mailhub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;mail.example.com:465
+&lt;span class=&quot;nv&quot;&gt;UseTLS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;YES
+&lt;span class=&quot;nv&quot;&gt;rewriteDomain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;example.com
+&lt;span class=&quot;nv&quot;&gt;FromLineOverride&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;YES&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;and of course change the example.com :).&lt;/p&gt;
+
+&lt;p&gt;There are a lot of documentation out there if you need to set it up to gmail.&lt;/p&gt;
+
+&lt;p&gt;So your system can send mail now. I did create a small python script that is like a wrapper to send mail from the system.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/sendmail.tpl.py&quot;&gt;The script can be found here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Usage:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;usage: sendmail.py &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-h] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-f FROMEMAIL] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-t TO] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-s SUBJECT] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-b BODY]
+                   &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-c COMMAND] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-v]
+
+optional arguments:
+  -h, --help            show this &lt;span class=&quot;nb&quot;&gt;help &lt;/span&gt;message and &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+  -f FROMEMAIL, --fromemail FROMEMAIL
+                        From email address
+  -t TO, --to TO        To email address
+  -s SUBJECT, --subject SUBJECT
+                        Email subject
+  -b BODY, --body BODY  Email body, used &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; -c is not present
+  -c COMMAND, --command COMMAND
+                        Command to generate text body
+  -v, --verbose         Verbose mode&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Ok, so now I have a configured ssmtp and a script to send mail easily via the command line.&lt;/p&gt;
+
+&lt;p&gt;I created this one liner bash script that will get (via grep) the content in the todo file and use it as the body of the email, like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;##!/bin/bash&lt;/span&gt;
+/home/pi/kalliope_config/script/sendmail.py -s&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[kalliope] Grocery list&quot;&lt;/span&gt; -b&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;grep +grocery ~/todo.txt&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;I named it mail_grocery.sh.&lt;/p&gt;
+
+&lt;p&gt;Then, I just leverage the script neuron to fire the bash script&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;send-shopping-list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;me&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;shopping&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;script/mail_grocery.sh&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And you should be all set !&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home" /><category term="automotation" /><category term="todotxt" /><summary type="html">Introduction</summary></entry><entry><title type="html">Monitor and restart Kalliope via a led and a push button</title><link href="http://localhost:4000/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button.html" rel="alternate" type="text/html" title="Monitor and restart Kalliope via a led and a push button" /><published>2017-02-24T00:00:00+01:00</published><updated>2017-02-24T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button</id><content type="html" xml:base="http://localhost:4000/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Tonight, I wanted to play a bit with my old raspberry pi B+ that I wasn’t using anymore.&lt;/p&gt;
+
+&lt;p&gt;I wanted to use this rpi to monitor the temperature inside my house, and to do so I had to buy a sensor and a small electronic kit. While the temperature thing is not ready (even though the sensor is already plugged - but that will be another blog post), I had fun with 2 other elements of the electronic kit: A led and a push button.&lt;/p&gt;
+
+&lt;p&gt;The idea was simple: having a red LED that goes on when Kalliope is not responding anymore and a push button to restart the whole thing when needed.&lt;/p&gt;
+
+&lt;p&gt;So that if kalliope crashes, the red light will indicate me quickly and if I’m too lazy to go to my laptop to check what happened, I can simply press the button to restart every processes.&lt;/p&gt;
+
+&lt;h2 id=&quot;how&quot;&gt;How&lt;/h2&gt;
+
+&lt;p&gt;My setup is simple: I have 1 rpi with Kalliope installed on it, and another rpi with the component installed. I already have a lot working on the kalliope pi (kalliope and its API, mopidy and X with a touchscreen) so I used this other one.&lt;/p&gt;
+
+&lt;p&gt;What I did:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create a script on kalliope rpi that restart everything&lt;/li&gt;
+  &lt;li&gt;Create a script on the rpi B+ that starts / stops the led when needed&lt;/li&gt;
+  &lt;li&gt;Create a script on the rpi B+ that listen to the push button&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;installing-the-led-and-the-button&quot;&gt;Installing the led and the button&lt;/h2&gt;
+
+&lt;p&gt;I won’t go in details here, I just followed some how to online and adapted to my needs. I invite you to do the same to setup your led and your button.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://thepihut.com/blogs/raspberry-pi-tutorials/27968772-turning-on-an-led-with-your-raspberry-pis-gpio-pins&quot;&gt;A how to for the led&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://razzpisampler.oreilly.com/ch07.html&quot;&gt;A how to for the button&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;I even throw here the &lt;a href=&quot;https://thepihut.com/blogs/raspberry-pi-tutorials/27968772-turning-on-an-led-with-your-raspberry-pis-gpio-pins&quot;&gt;how to for my temperature sensor&lt;/a&gt;, because why not :)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-scripts&quot;&gt;The scripts&lt;/h2&gt;
+
+&lt;h3 id=&quot;restart-script&quot;&gt;Restart script&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/restart.sh&quot;&gt;The restart script can be found here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I manage kalliope and mopidy via the pi user because of some Pulseaudio issue, so that makes this script a bit ugly, but the idea is simple: kill running processes and restart them. Make sure this script is executable (&lt;code class=&quot;highlighter-rouge&quot;&gt;chmod +x restart.sh&lt;/code&gt;) and where your user can access it.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-led-script&quot;&gt;The led script&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/is_kalliope_online.py&quot;&gt;The led script can be found here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Try to access kalliope,. I choose to do it via the API. For now, it uses GET /synapses that is a bit heavy, but when &lt;a href=&quot;https://github.com/kalliope-project/kalliope/blob/audio_api/kalliope/core/RestAPI/FlaskAPI.py#L67&quot;&gt;this branch&lt;/a&gt; will get merged, it will be lighter via a simple GET / to get kalliope version&lt;/li&gt;
+  &lt;li&gt;If Kalliope is off, turn on LED, if kalliope is on, turn off led&lt;/li&gt;
+  &lt;li&gt;I also added a temporary file that contains previous status, so the script don’t fire GPIO commands every minutes.&lt;/li&gt;
+  &lt;li&gt;Launch this script via cron task (I choose every 2 minutes, but that’s your choice)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Use the -h option of the script for help about script arguments.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-button-script&quot;&gt;The button script&lt;/h3&gt;
+
+&lt;p&gt;This is the script that needs to be always running on rpi B+, so that when I push the button, it will fire the restart.sh via ssh.&lt;br /&gt;
+&lt;em&gt;For this to work, the user from the rpiB+ needs to be able to connect over ssh without password (via ssh key)!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The script itself can be &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/emergency_button.py&quot;&gt;found here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You need to have it running all the time, and for this, I created a &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/systemd/emergency-button.service&quot;&gt;systemd service file that be found here&lt;/a&gt;, thanks to my friend rustx!&lt;/p&gt;
+
+&lt;p&gt;All you need to do is to put it in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/systemd/system/&lt;/code&gt; and enable it at boot:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;sudo systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;emergency-button.service&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Start it (&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo service emergency-button start&lt;/code&gt;) and check that everything is fine with the command &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo status emergency-button&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You should have something like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;● emergency-button.service
+   Loaded: loaded &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;/etc/systemd/system/emergency-button.service; enabled&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   Active: active &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;running&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; since ven. 2017-02-24 22:55:08 UTC; 6min ago
+ Main PID: 8349 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;emergency_butto&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   CGroup: /system.slice/emergency-button.service
+           └─8349 /usr/bin/python /home/pi/scripts/emergency_button.py&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And normally everything should go smoothly, and each time the red led is on, just press the button to restart the whole shebang!&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Ssmtp and password containing</title><link href="http://localhost:4000/2017/02/23/ssmtp-password-with.html" rel="alternate" type="text/html" title="Ssmtp and password containing" /><published>2017-02-23T00:00:00+01:00</published><updated>2017-02-23T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/23/ssmtp-password-with</id><content type="html" xml:base="http://localhost:4000/2017/02/23/ssmtp-password-with.html">&lt;p&gt;Quick note as a “note to self”, do &lt;em&gt;not&lt;/em&gt; use # in AuthPass with ssmtp!&lt;/p&gt;
+
+&lt;p&gt;https://bugs.debian.org/cgi-bin/pkgreport.cgi?repeatmerged=no&amp;amp;src=ssmtp#_0_3_4&lt;/p&gt;
+
+&lt;p&gt;https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=544018&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="ssmtp" /><category term="tips" /><summary type="html">Quick note as a “note to self”, do not use # in AuthPass with ssmtp!</summary></entry><entry><title type="html">Opening Tv show episode via Kalliope</title><link href="http://localhost:4000/2017/02/22/opening-tv-show-episode-via-kalliope.html" rel="alternate" type="text/html" title="Opening Tv show episode via Kalliope" /><published>2017-02-22T00:00:00+01:00</published><updated>2017-02-22T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/22/opening-tv-show-episode-via-kalliope</id><content type="html" xml:base="http://localhost:4000/2017/02/22/opening-tv-show-episode-via-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Today, a quick blog post about something I’ve put in place when I started playing with Kalliopé: asking kalliope to read videos from me.&lt;/p&gt;
+
+&lt;p&gt;The idea is simple: I have a raspberry pi in my living room plugged on my TV. On it &lt;a href=&quot;http://kodi.tv&quot;&gt;kodi&lt;/a&gt; is installed and a hard drive with some tv shows episode on it (legally acquired!). The goal was to simply ask Kalliope to find a file on kodi hard drive and run it on kodi, eg: “Launch tv show friends episode 101”&lt;/p&gt;
+
+&lt;h2 id=&quot;the-idea&quot;&gt;The idea&lt;/h2&gt;
+
+&lt;p&gt;First I asked myself if a neuron was useful or not here.&lt;/p&gt;
+
+&lt;p&gt;If I created a neuron, it would be either&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A kodi neuron that need to implement their complex API&lt;/li&gt;
+  &lt;li&gt;A neuron specific to my setup that no-one would reuse&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Looking at my alternatives, I decided to manage it mainly via a simple shell script that would parse a simple text to find the name of the show, the episode and season.&lt;br /&gt;
+The script would then look over ssh to find the file name and then run a request against Kodi API to launch the file directly.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-does-the-shell-script-do&quot;&gt;What does the shell script do&lt;/h2&gt;
+
+&lt;p&gt;The script will receive in argument something like &lt;TvShow_name&gt; &lt;season_number&gt;&lt;episode_number&gt;&lt;/episode_number&gt;&lt;/season_number&gt;&lt;/TvShow_name&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;TvShow_name&gt; is a string (eg: &quot;friends&quot;)
+&lt;/TvShow_name&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;season_number&gt; is a number on 1 or 2 digit (eg: &quot;1&quot; or 12&quot;)
+&lt;/season_number&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;episode_number&gt; is a number always on 2 digit (eg: &quot;01&quot; or &quot;21&quot;)
+
+&lt;/episode_number&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Based on this three information, the script will connect via ssh and run a find command on to find a file containing either:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the &lt;TvShow_name&gt; and &quot;S&lt;season_number&gt;E&lt;episode_number&gt;&quot;   (in this case, if season_number is lower than 10, the number will be put on 2 digit before)&lt;/episode_number&gt;&lt;/season_number&gt;&lt;/TvShow_name&gt;&lt;/li&gt;
+  &lt;li&gt;the &lt;TvShow_name&gt; and &quot;S&lt;season_number&gt;EP&lt;episode_number&gt;&quot;   (in this case, if season_number is lower than 10, the number will be put on 2 digit before)&lt;/episode_number&gt;&lt;/season_number&gt;&lt;/TvShow_name&gt;&lt;/li&gt;
+  &lt;li&gt;the &lt;TvShow_name&gt; and &quot;&lt;season_number&gt;&lt;episode_number&gt;&quot;&lt;/episode_number&gt;&lt;/season_number&gt;&lt;/TvShow_name&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This are the 2 uses cases for my file name. So a couple of example:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“friends 304” will search for file containing:
+    &lt;ul&gt;
+      &lt;li&gt;“friends” and “S03E04”&lt;/li&gt;
+      &lt;li&gt;“friends” and “S03EP04”&lt;/li&gt;
+      &lt;li&gt;“friends” and “304”&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;“friends 121” will search for file containing:
+    &lt;ul&gt;
+      &lt;li&gt;“friends” and “S01E21”&lt;/li&gt;
+      &lt;li&gt;“friends” and “S01EP21”&lt;/li&gt;
+      &lt;li&gt;“friends” and “121”&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;“friends 1005” will search for file containing:
+    &lt;ul&gt;
+      &lt;li&gt;“friends” and “S10E05”&lt;/li&gt;
+      &lt;li&gt;“friends” and “S10EP05”&lt;/li&gt;
+      &lt;li&gt;“friends” and “1005”&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once a file is found (first one), the Kodi API is used to start this file. The API command looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -g &lt;span class=&quot;s1&quot;&gt;'http://kodi/jsonrpc?request={&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:&quot;1&quot;,&quot;method&quot;:&quot;Player.Open&quot;,&quot;params&quot;:{&quot;item&quot;:{&quot;file&quot;:&quot;'&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$result_string&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&quot;}}}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Where &lt;code class=&quot;highlighter-rouge&quot;&gt;$result_string&lt;/code&gt; is the name of file (and thus the result of the find/grep command) and &lt;code class=&quot;highlighter-rouge&quot;&gt;kodi&lt;/code&gt; is the hostname of your kodi server.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;h3 id=&quot;the-shell-script&quot;&gt;The shell script&lt;/h3&gt;
+
+&lt;h4 id=&quot;enable-ssh-access&quot;&gt;Enable ssh access&lt;/h4&gt;
+
+&lt;p&gt;First, make sure the user that runs kalliope can connect via ssh without password (via ssh key or by manually opening an ssh-agent connection before launching kalliope)&lt;/p&gt;
+
+&lt;p&gt;I leave you find some tuto online about this kind of setup, there is already a lot of documentation!&lt;/p&gt;
+
+&lt;h4 id=&quot;install-the-script&quot;&gt;Install the script&lt;/h4&gt;
+
+&lt;p&gt;The full script can be found &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/find-episode.sh&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Download it, make it executable (&lt;code class=&quot;highlighter-rouge&quot;&gt;chmod +x find-episode.sh&lt;/code&gt;) and put it somewhere accessible by the user running kalliope.&lt;/p&gt;
+
+&lt;p&gt;(In my case, in a &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/&quot;&gt;script directory&lt;/a&gt; in my &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55&quot;&gt;kalliope starter kit&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;create-a-brain-file&quot;&gt;Create a brain file&lt;/h3&gt;
+
+&lt;p&gt;This is my example but you can change to your needs:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Start-episode&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;episode&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;cmd&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/path/to/script/find-episode.sh&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+             &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The important thing is is to send the arguments as one query to the script that will manage the rest itself.&lt;/p&gt;
+
+&lt;p&gt;I could have created an order like &lt;code class=&quot;highlighter-rouge&quot;&gt;start tv show  season number  episode number&lt;/code&gt; but the shell neuron didn’t take arguments. I made an &lt;a href=&quot;https://github.com/kalliope-project/kalliope/pull/132/files&quot;&gt;accepted PR&lt;/a&gt; to be able to send an argument to the shell script.&lt;/p&gt;
+
+&lt;p&gt;Maybe I should PR it again to add the ability to pass unlimited number of arguments that will be send to the shell script … But that then raise questions of orders, options, …&lt;/p&gt;
+
+&lt;p&gt;I hope this will work for you as well so you will be able to fire tv show episode without looking at your remote!&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="kodi" /><summary type="html">Introduction</summary></entry><entry><title type="html">Kalliope system status neuron</title><link href="http://localhost:4000/2017/02/21/kalliope-system-status-neuron.html" rel="alternate" type="text/html" title="Kalliope system status neuron" /><published>2017-02-21T00:00:00+01:00</published><updated>2017-02-21T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/21/kalliope-system-status-neuron</id><content type="html" xml:base="http://localhost:4000/2017/02/21/kalliope-system-status-neuron.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Couple of days ago, I created a very simple neuron to retrieve some system data and have an idea of the system kalliope runs on. It was in the same idea of the &lt;a href=&quot;node/31&quot;&gt;poorsman loganalyser I talked about before&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In all honesty, most credits goes to &lt;a href=&quot;https://github.com/edouardpoitras/jasper-status&quot;&gt;this github repository&lt;/a&gt; I found that did almost all the job for me.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-does-it-do-&quot;&gt;What does it do ?&lt;/h2&gt;
+
+&lt;p&gt;So far, it returns the following variable that can then be used in a template or say_template:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;running_since&lt;/li&gt;
+  &lt;li&gt;os: OS name&lt;/li&gt;
+  &lt;li&gt;os_version: Kernel version&lt;/li&gt;
+  &lt;li&gt;system_name: Name of your host&lt;/li&gt;
+  &lt;li&gt;system_nb_core: Number of core&lt;/li&gt;
+  &lt;li&gt;cpu: % of CPU usage&lt;/li&gt;
+  &lt;li&gt;memory: % of memory usage&lt;/li&gt;
+  &lt;li&gt;disk: % of disk usage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Look at the &lt;a href=&quot;https://github.com/bacardi55/kalliope-system-status&quot;&gt;readme&lt;/a&gt; for an up to date list :)&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;The usual:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;kalliope install --git-url https://github.com/bacardi55/kalliope-system-status.git&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;Create a brain file like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  - name: &lt;span class=&quot;s2&quot;&gt;&quot;System-status&quot;&lt;/span&gt;
+    signals:
+      - order: &lt;span class=&quot;s2&quot;&gt;&quot;Step into analysis mode, please&quot;&lt;/span&gt;
+    neurons:
+      - system_status:
+          say_template: 
+            - &lt;span class=&quot;s2&quot;&gt;&quot;I'm running on , kernel , with  cores.    C P U usage  %  memory usage  %  disk usage  %&quot;&lt;/span&gt;
+          cache: False&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Or create a more complex template :)&lt;/p&gt;
+
+&lt;p&gt;I’ll add more into this, but if you have idea, PR on github or comment on this post :)&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Kalliope GoogleMaps neuron</title><link href="http://localhost:4000/2017/02/21/kalliope-googlemaps-neuron.html" rel="alternate" type="text/html" title="Kalliope GoogleMaps neuron" /><published>2017-02-21T00:00:00+01:00</published><updated>2017-02-21T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/21/kalliope-googlemaps-neuron</id><content type="html" xml:base="http://localhost:4000/2017/02/21/kalliope-googlemaps-neuron.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;If you follow me on twitter or github, you may have seen this new neuron coming, otherwise, let me introduce to you the &lt;a href=&quot;https://github.com/bacardi55/kalliope-gmaps&quot;&gt;Google Maps neuron&lt;/a&gt; :)&lt;/p&gt;
+
+&lt;p&gt;The goal as you can guess is to leverage the Google Maps API to get direction, distance or direction from an origin point to a destination (it doesn’t handle multi origin or destination yet).&lt;/p&gt;
+
+&lt;h2 id=&quot;what-can-you-do-&quot;&gt;What can you do ?&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ask for the address of a place (eg: “what is the address of the Eiffel tour”)&lt;/li&gt;
+  &lt;li&gt;Ask for the distance / time between 2 places. (how far is “address A” from “Address B”)
+    &lt;ul&gt;
+      &lt;li&gt;Ask for the directions between 2 places, on top of distance/time. (how to go from “Address A” to “Address B”)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The synapse has a lot of options, so you can set your transportation mode (driving, walking, tube, …), the language, the units system, …&lt;br /&gt;
+Read the &lt;a href=&quot;https://github.com/bacardi55/kalliope-gmaps/blob/master/README.md&quot;&gt;readme file&lt;/a&gt; as it contains more information (and more up to date).&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;h3 id=&quot;neuron&quot;&gt;Neuron&lt;/h3&gt;
+
+&lt;p&gt;Usual neuron installation:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;kalliope install --git-url https://github.com/bacardi55/kalliope-gmaps.git&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Will install the neuron and the [google maps services python library)[https://googlemaps.github.io/google-maps-services-python/docs/2.4.5/)&lt;/p&gt;
+
+&lt;h3 id=&quot;synapse&quot;&gt;Synapse&lt;/h3&gt;
+
+&lt;p&gt;Get the distance and time between 2 locations&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gmaps-distance&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;distance&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;between&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;gmaps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;gmaps_api_key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*********&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;driving&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;en&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;units&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;metric&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;traffic_model&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;pessimistic&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;origin&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;destination&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;file_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;templates/en_gmaps.j2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Get the address of a place by its name&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gmaps-place-address&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;gmaps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;gmaps_api_key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;******************&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;en&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;units&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;metric&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;search&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;file_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;templates/en_gmaps.j2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can find more up to date example on the &lt;a href=&quot;https://github.com/bacardi55/kalliope-gmaps/blob/master/README.md&quot;&gt;github readme page&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;template&quot;&gt;template&lt;/h3&gt;
+
+&lt;p&gt;Here is a single template file to handle multiple use cases:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jinja&quot; data-lang=&quot;jinja&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;KO&quot;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    Sorry, but the search didn't work, Sir
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;OK&quot;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;search&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+            Distance between &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;origin&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; and &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;search&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; is &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;distance&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;.
+            You need around &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; to go there
+            &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time_traffic&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+                You need to plan &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;time_traffic&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; with the current traffic
+            &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+            Address of &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; is &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;destination&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;destination&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+        Distance between &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;oringi&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; and &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;destination&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; is &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;distance&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
+        You need about &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; to go there.
+        &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time_traffic&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+          Plan &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time_traffic&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; with current traffic.
+        &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+
+    &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;directions&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt; 
+        To go to &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;destination&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;, you need
+        &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;direction&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;directions&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+            &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;direction&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endfor&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Of course, you can simplify by splitting it into several templates depending on the arguments you send.&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-next&quot;&gt;What’s next&lt;/h2&gt;
+
+&lt;p&gt;Obviously, the Gmaps API is so rich that the possibility for this neuron are limitless… But at least this first version let you do the basics…&lt;/p&gt;
+
+&lt;p&gt;What I have in mind for next updates:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;multi origin / destination&lt;/li&gt;
+  &lt;li&gt;Leverage more API from google maps&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As always, ideas or pull requests are more than welcome!&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Kalliope - a poorsman log analyser</title><link href="http://localhost:4000/2017/02/21/kalliope-a-poorsman-log-analyser.html" rel="alternate" type="text/html" title="Kalliope - a poorsman log analyser" /><published>2017-02-21T00:00:00+01:00</published><updated>2017-02-21T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/21/kalliope-a-poorsman-log-analyser</id><content type="html" xml:base="http://localhost:4000/2017/02/21/kalliope-a-poorsman-log-analyser.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Today, I wanted to have a quick overview of my Kalliope usage. I have more and more neurons available and more and more configured synapses so I thought it could be cool to start having some data.&lt;/p&gt;
+
+&lt;p&gt;I didn’t want to put in place some heavy log analyser or sort, a simple bash script would do the trick.&lt;/p&gt;
+
+&lt;p&gt;Of course, I also wanted the output interface to be Kalliope as well (:&lt;/p&gt;
+
+&lt;h2 id=&quot;how&quot;&gt;How&lt;/h2&gt;
+
+&lt;h3 id=&quot;generate-log-with-kalliope&quot;&gt;Generate log with kalliope&lt;/h3&gt;
+
+&lt;p&gt;By default, logs are just the output of Kalliope and are not stored in logs. So instead of implementing something within Kalliope, I thought it would be easier to just launch kalliope and push the output into a log file. I also wanted to still be able to see the logs in the terminal I launched Kalliope with.&lt;/p&gt;
+
+&lt;p&gt;Normally, a simple&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; | tee output.log&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Should be enough, but because it is a python script, you actually need to launch Kalliope like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;/usr/bin/python -u /usr/local/bin/kalliope start | tee -a kalliope.log &lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;read-logs&quot;&gt;Read logs&lt;/h3&gt;
+
+&lt;p&gt;I then created the simplest shell script possible. Can be found in &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55&quot;&gt;my kalliope starter kit&lt;/a&gt; &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/poorsmanloganalyser.sh&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;##!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;## You need to have kalliope logs available. To do so, I run kalliope like this:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## /usr/bin/python -u /usr/local/bin/kalliope start | tee -a kalliope.log&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## So that logs are still displayed on standard output and in a log file&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;## Edit the audio variable text to use the variable as needed. Kalliope will read the content of the audio variable (output of the script)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;LOG_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/home/pi/kalliope_config/kalliope.log&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;nb_trigger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;cat &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | grep &lt;span class=&quot;s2&quot;&gt;&quot;Say something!&quot;&lt;/span&gt; | wc -l&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;nb_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;cat &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | grep &lt;span class=&quot;s2&quot;&gt;&quot;Order matched in the brain&quot;&lt;/span&gt; | wc -l&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;nb_audio_issue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;cat &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | grep &lt;span class=&quot;s2&quot;&gt;&quot;Google Speech Recognition could not understand audio&quot;&lt;/span&gt; | wc -l&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;nb_no_synapse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;cat &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | grep &lt;span class=&quot;s2&quot;&gt;&quot;No synapse match the captured order&quot;&lt;/span&gt; | wc -l&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;As far as I remember, &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nb_trigger&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; vocal orders have been triggered, I didn't understood &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nb_no_synapse&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; of them and had an audio issue for &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nb_audio_issue&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; of them&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$audio&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;basically looking in the output the number of line matching some patterns triggered by Kalliopé.&lt;/p&gt;
+
+&lt;p&gt;The content of the audio variable is the text that will be read by Kalliope.&lt;/p&gt;
+
+&lt;h3 id=&quot;create-your-brain&quot;&gt;Create your brain&lt;/h3&gt;
+
+&lt;p&gt;Now that you have the log generated, and the script to read them, you need to create the brain that will fire a simple shell script and read the output.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;System-status&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Step&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;into&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;analysis&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;mode,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;please&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;cmd&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sh&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;script/poorsmanloganalyser.sh&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And now you can have some numbers (:&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry></feed>

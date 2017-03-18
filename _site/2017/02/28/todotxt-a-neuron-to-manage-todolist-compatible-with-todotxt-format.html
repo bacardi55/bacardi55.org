@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Todotxt, a neuron to manage todolist compatible with todotxt format!</title>
+  <meta name="description" content="Introduction">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html">
+  <link rel="alternate" type="application/rss+xml" title="Bacardi55&#39;s random notes" href="/feed.xml">
+
+  
+
+  <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Todotxt, a neuron to manage todolist compatible with todotxt format! - Bacardi55’s random notes</title>
+<meta property="og:title" content="Todotxt, a neuron to manage todolist compatible with todotxt format!" />
+<meta name="description" content="Introduction" />
+<meta property="og:description" content="Introduction" />
+<link rel="canonical" href="http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html" />
+<meta property="og:url" content="http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html" />
+<meta property="og:site_name" content="Bacardi55’s random notes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-02-28T00:00:00+01:00" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Todotxt, a neuron to manage todolist compatible with todotxt format!",
+"datePublished": "2017-02-28T00:00:00+01:00",
+"description": "Introduction",
+"url": "http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Bacardi55&#39;s random notes</a>
+
+    <nav class="site-nav">
+      <span class="menu-icon">
+        <svg viewBox="0 0 18 15" width="18px" height="15px">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </span>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/arhive">Archive</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/kalliope">Kalliopé</a>
+          
+        
+          
+          <a class="page-link" href="/my-laptop-configuration-with-i3wm.html">i3wm config</a>
+          
+        
+          
+          <a class="page-link" href="/tags">Tags</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Todotxt, a neuron to manage todolist compatible with todotxt format!</h1>
+    <p class="post-meta"><time datetime="2017-02-28T00:00:00+01:00" itemprop="datePublished">Feb 28, 2017</time></p>
+  </header>
+
+  <!-- Tags -->
+  
+    <a href="/tags#kalliope" class="tag">kalliope</a>,
+  
+    <a href="/tags#home" class="tag">home</a>,
+  
+    <a href="/tags#automotation" class="tag">automotation</a>,
+  
+    <a href="/tags#todotxt" class="tag">todotxt</a>
+  
+
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="introduction">Introduction</h2>
+
+<p>As promised in my <a href="/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html">todotxt neuron post</a>, here is a post about how I managed my todolist via <a href="https://kalliope-project.github.io/">Kalliope</a> !</p>
+
+<p>As it’s compatible with <a href="http://todotxt.com/">todotxt</a> format, you can still use the same file as kalliope to manage your todolists.</p>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="install-the-neuron">Install the neuron</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>kalliope install --git-url https://github.com/bacardi55/kalliope-todotxt.git<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h3 id="configuration">Configuration</h3>
+
+<p>First things first, you need a todo file (empty or not) that kalliope will use.</p>
+
+<p>For example, I created a simple file in my root directory:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>touch ~/todo.txt<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Then you need to choose the name of your project so item can be filtered. It will add +project in your todoline (but won’t say it at loud).</p>
+
+<p>In this example, I’ve choosen <code class="highlighter-rouge">grocery</code></p>
+
+<h4 id="add-item">Add item</h4>
+
+<p>First thing we need, is to add item to our list. To do so, create a new brain file <code class="highlighter-rouge">todotxt.yml</code> in your brain folder and put:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre>  <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">add-item-to-grocery-list"</span>
+    <span class="s">signals</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">order</span><span class="pi">:</span> <span class="s2">"</span><span class="s">think</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">buying</span><span class="nv"> </span><span class="s">{{content}}"</span>
+    <span class="s">neurons</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">todotxt</span><span class="pi">:</span>
+          <span class="s">action</span><span class="pi">:</span> <span class="s2">"</span><span class="s">add"</span>
+          <span class="s">todotxt_file</span><span class="pi">:</span> <span class="s2">"</span><span class="s">~/todo.txt"</span>
+          <span class="s">action</span><span class="pi">:</span> <span class="s2">"</span><span class="s">add"</span>
+          <span class="s">project</span><span class="pi">:</span> <span class="s2">"</span><span class="s">grocery"</span>
+          <span class="s">args</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="s">content</span>
+          <span class="s">say_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">I</span><span class="nv"> </span><span class="s">added</span><span class="nv"> </span><span class="s">{{added_task.task}}</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">grocery</span><span class="nv"> </span><span class="s">list"</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Here, no need of a template, Kalliope return the item added in the list.</p>
+
+<p>Now, you should be able to look into the todo.txt file and see the added line. Eg: if I said “think about buying milk”, I’ll have a new line in my todo.txt file like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre>milk +grocery<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h4 id="list-items">List items</h4>
+
+<p>Now that we have added an item, we want to be able to hear them from kalliope before going shopping.</p>
+
+<p>Add this in your brain file:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>  <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Get-grocery-items"</span>
+    <span class="s">signals</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">order</span><span class="pi">:</span> <span class="s2">"</span><span class="s">grocery</span><span class="nv"> </span><span class="s">list"</span>
+    <span class="s">neurons</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">todotxt</span><span class="pi">:</span>
+          <span class="s">action</span><span class="pi">:</span> <span class="s2">"</span><span class="s">get"</span>
+          <span class="s">todotxt_file</span><span class="pi">:</span> <span class="s2">"</span><span class="s">~/todo.txt"</span>
+          <span class="s">project</span><span class="pi">:</span> <span class="s2">"</span><span class="s">grocery"</span>
+          <span class="s">file_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">templates/grocery.j2"</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Then, create the template file (here <code class="highlighter-rouge">templates/grocery.j2</code>) and add:</p>
+
+<figure class="highlight"><pre><code class="language-jina" data-lang="jina"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre>{% if count &gt; 0 %}
+    Your grocery list contains:
+    {% for task in task_list %}
+        {{ task.text  }}
+    {% endfor %}
+{% else %}
+    You don't have any item in your list
+{% endif %}<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>And here we go! You can now go shopping!</p>
+
+<h4 id="delete-items">Delete items</h4>
+
+<p>Once your shopping is done, you want to empty the list, via Kalliope of course!</p>
+
+<p>Add this to your brain file:</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre>  <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">clear-shopping-list"</span>
+    <span class="s">signals</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">order</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Clear</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">shopping</span><span class="nv"> </span><span class="s">list"</span>
+    <span class="s">neurons</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">todotxt</span><span class="pi">:</span>
+          <span class="s">action</span><span class="pi">:</span> <span class="s2">"</span><span class="s">del"</span>
+          <span class="s">todotxt_file</span><span class="pi">:</span> <span class="s2">"</span><span class="s">~/todo.txt"</span>
+          <span class="s">project</span><span class="pi">:</span> <span class="s2">"</span><span class="s">grocery"</span>
+          <span class="s">say_template</span><span class="pi">:</span> <span class="s2">"</span><span class="s">{{count}}</span><span class="nv"> </span><span class="s">items</span><span class="nv"> </span><span class="s">have</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">deleted"</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>And voilà!</p>
+
+<h4 id="send">Send</h4>
+
+<p><em>Wait wait wait, you can’t send it ?</em></p>
+
+<p>Hmm, I thought about it, but I didn’t thought that it should be done by the todotxt neuron. It’s role is only to manage the text file. Adding a send method would break that rule and make it too customized.</p>
+
+<p><em>So… no getting that list on my phone ? I have a bad memory you know…</em></p>
+
+<p>Of course you can, and of course I’ll give you the tip :)</p>
+
+<p>First, I decided to stay simple, no mail server heavy configuration or things like that. You can use sendmail, postfix, ssmtp to send email, this tip should still work.</p>
+
+<p>For this example, I’m using ssmtp to connect to a remote smtp server (own by me) so no big configuration.</p>
+
+<p>Just edit the <code class="highlighter-rouge">/etc/ssmtp/ssmtp.conf</code> file</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="nv">root</span><span class="o">=</span>mail@example.com
+<span class="nv">AuthUser</span><span class="o">=</span>mail@example.com
+<span class="nv">AuthPass</span><span class="o">=</span>YourMailPassword
+<span class="nv">mailhub</span><span class="o">=</span>mail.example.com:465
+<span class="nv">UseTLS</span><span class="o">=</span>YES
+<span class="nv">rewriteDomain</span><span class="o">=</span>example.com
+<span class="nv">FromLineOverride</span><span class="o">=</span>YES<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>and of course change the example.com :).</p>
+
+<p>There are a lot of documentation out there if you need to set it up to gmail.</p>
+
+<p>So your system can send mail now. I did create a small python script that is like a wrapper to send mail from the system.</p>
+
+<p><a href="https://github.com/bacardi55/kalliope-starter55/blob/master/script/sendmail.tpl.py">The script can be found here</a></p>
+
+<p>Usage:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre>usage: sendmail.py <span class="o">[</span>-h] <span class="o">[</span>-f FROMEMAIL] <span class="o">[</span>-t TO] <span class="o">[</span>-s SUBJECT] <span class="o">[</span>-b BODY]
+                   <span class="o">[</span>-c COMMAND] <span class="o">[</span>-v]
+
+optional arguments:
+  -h, --help            show this <span class="nb">help </span>message and <span class="nb">exit</span>
+  -f FROMEMAIL, --fromemail FROMEMAIL
+                        From email address
+  -t TO, --to TO        To email address
+  -s SUBJECT, --subject SUBJECT
+                        Email subject
+  -b BODY, --body BODY  Email body, used <span class="k">if</span> -c is not present
+  -c COMMAND, --command COMMAND
+                        Command to generate text body
+  -v, --verbose         Verbose mode<span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Ok, so now I have a configured ssmtp and a script to send mail easily via the command line.</p>
+
+<p>I created this one liner bash script that will get (via grep) the content in the todo file and use it as the body of the email, like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2</pre></td><td class="code"><pre><span class="c">##!/bin/bash</span>
+/home/pi/kalliope_config/script/sendmail.py -s<span class="o">=</span><span class="s2">"[kalliope] Grocery list"</span> -b<span class="o">=</span><span class="s2">"</span><span class="sb">`</span>grep +grocery ~/todo.txt<span class="sb">`</span><span class="s2">"</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>I named it mail_grocery.sh.</p>
+
+<p>Then, I just leverage the script neuron to fire the bash script</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre>  <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">send-shopping-list"</span>
+    <span class="s">signals</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">order</span><span class="pi">:</span> <span class="s2">"</span><span class="s">send</span><span class="nv"> </span><span class="s">me</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">shopping</span><span class="nv"> </span><span class="s">list"</span>
+    <span class="s">neurons</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">script</span><span class="pi">:</span>
+          <span class="s">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">script/mail_grocery.sh"</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>And you should be all set !</p>
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Bacardi55&#39;s random notes</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              Bacardi55
+            
+            </li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/bacardi55"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">bacardi55</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/bacardi555"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">bacardi555</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>This is a small place on the Internet where I talk about stuff…
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

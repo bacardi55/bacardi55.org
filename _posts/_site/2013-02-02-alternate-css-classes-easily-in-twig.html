@@ -1,0 +1,40 @@
+Today, I wanted to style a little bit my project.
+The basic way in classic PHP project would be to use the iterator variable of your `for loop` with the use of `modulo`.
+
+For example:
+
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="s1">'odd'</span> <span class="o">:</span> <span class="s1">'even'</span> <span class="p">;</span> <span class="cp">?&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;/div&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+In twig, when you use a loop, there are several variables that you can use like `loop.index`, `loop.first`, `loop.last`. I won't copy/paste the official documentation here, you can read it here [twig loop documentation](http://twig.sensiolabs.org/doc/tags/for.html).
+
+To use the modulo function in twig, just use
+
+<figure class="highlight"><pre><code class="language-twig" data-lang="twig"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> <span class="cp">{{</span> <span class="nv">10</span> <span class="err">%</span> <span class="nv">2</span> <span class="cp">}}</span> <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+And there you go, as simple as in PHP.
+
+Then, using twig, you can do this:
+
+<figure class="highlight"><pre><code class="language-twig" data-lang="twig"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> <span class="cp">{%</span> <span class="k">if</span> <span class="nv">loop.index</span> <span class="err">%</span> <span class="nv">2</span> <span class="o">==</span> <span class="nv">0</span> <span class="cp">%}</span> <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+Or in my case I needed this :
+
+<figure class="highlight"><pre><code class="language-twig" data-lang="twig"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> <span class="cp">{%</span> <span class="k">if</span> <span class="nv">loop.parent.loop.index</span> <span class="err">%</span> <span class="nv">2</span> <span class="o">==</span> <span class="nv">0</span> <span class="cp">%}</span> <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+To be able to use the index of my parent loop :)
+
+On [this blog](http://nerdpress.org/2012/02/14/modulo-in-twig/), I found the following tips :
+
+<figure class="highlight"><pre><code class="language-twig" data-lang="twig"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> <span class="cp">{%</span> <span class="k">if</span> <span class="nv">loop.index</span> <span class="nb">divisibleby</span><span class="p">(</span><span class="nv">2</span><span class="p">)</span> <span class="cp">%}</span> <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+Isn't it beautiful ? But it gets even better!
+
+<figure class="highlight"><pre><code class="language-twig" data-lang="twig"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre> <span class="cp">{{</span> <span class="nv">cycle</span><span class="p">([</span><span class="s1">'odd'</span><span class="p">,</span> <span class="s1">'even'</span><span class="p">],</span> <span class="nv">loop.index</span><span class="p">)</span> <span class="cp">}}</span> <span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+And there you go, thank you [twig](http://twig.sensio.org "twig") !

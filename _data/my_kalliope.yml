@@ -1,0 +1,86 @@
+neurons:
+  - name: Available orders
+    url: https://github.com/bacardi55/kalliope-list-available-orders
+    status: working
+    description: Give you all available orders
+
+  - name: Domoticz
+    status: in dev and not finished
+    url: https://github.com/bacardi55/kalliope-domoticz
+    description: Manage domoticz via Kalliopé
+
+  - name: Google Calendar
+    url: https://github.com/bacardi55/kalliope-google-calendar
+    status: working
+    description: Get your next event from your gCalendar
+
+  - name: Google Maps
+    url: https://github.com/bacardi55/kalliope-gmaps
+    status: working
+    description: Give distance or itinerary via GMaps
+
+  - name: MPD
+    url: https://github.com/bacardi55/kalliope-mpd
+    status: working but alpha version - tested only with mopidy
+    description: Control an MPD server via Kalliopé
+
+  - name: PiCamera
+    status: proof of concept
+    description: can take picture via the PiCamera
+    url: https://github.com/bacardi55/kalliope-picamera
+
+  - name: Repeat
+    url: https://github.com/bacardi55/kalliope-repeat
+    status: working
+    description: Let Kalliopé repeat what you say. Main use is via the API.
+
+  - name: System status
+    status: working
+    url: https://github.com/bacardi55/kalliope-system-status
+    description: Give back data about Kalliopé operating system
+
+  - name: Tototxt
+    status: working, but not 100% feature coverage yet
+    url: https://github.com/bacardi55/kalliope-todotxt
+    description: Manage todolist compatible with todotxt format
+
+  - name: Uber
+    url: https://github.com/bacardi55/kalliope-uber
+    status: working
+    description: Give you a time for a driver to arrive and can give an estimate for price and drive length.
+
+  - name: Web scaper
+    status: working
+    url: https://github.com/bacardi55/kalliope-web-scraper
+    description: Get data from site without API or RSS
+
+scripts:
+  - name: Emergency button
+    url: https://github.com/bacardi55/kalliope-starter55/blob/master/script/emergency_button.py
+    description: Python script that will send restart signal to kalliope and mopidy when physical button is pressed
+
+  - name: find-episode
+    url: https://github.com/bacardi55/kalliope-starter55/blob/master/script/find-episode.sh
+    description: Start an episode on Kodi media center
+
+  - name: Is Kalliopé online
+    url: https://github.com/bacardi55/kalliope-starter55/blob/master/script/is_kalliope_online.py
+    description: Simple script to check if kalliope is still online (via API)
+
+  - name: Poor's man log analyser
+    url: https://github.com/bacardi55/kalliope-starter55/blob/master/script/poorsmanloganalyser.sh
+    description: Simple log analyser for Kalliope.
+
+  - name: reminder
+    url: https://github.com/bacardi55/kalliope-starter55/blob/master/script/reminder.py
+    description: Manage reminder via Kalliopé and its API
+
+  - name: send grocery list
+    url: https://github.com/bacardi55/kalliope-starter55/blob/master/script/mail_grocery.sh
+    description: Send grocery list (via todotxt file format)
+
+  - name: send mail
+    url: https://github.com/bacardi55/kalliope-starter55/blob/master/script/sendmail.tpl.py
+    description: python sendmail wrapper
+
+

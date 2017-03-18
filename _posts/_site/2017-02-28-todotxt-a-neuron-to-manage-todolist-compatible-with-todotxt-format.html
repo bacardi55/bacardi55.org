@@ -1,0 +1,279 @@
+<span class="field field--name-title field--type-string field--label-hidden">Todotxt, a neuron to manage todolist compatible with todotxt format!</span>
+<span class="field field--name-uid field--type-entity-reference field--label-hidden"><span lang="" about="http://bacardi55.org/en/user/1" typeof="schema:Person" property="schema:name" datatype="" xml:lang="">bacardi55</span></span>
+<span class="field field--name-created field--type-created field--label-hidden">Tue, 02/28/2017 - 02:11</span>
+
+            <div class="clearfix text-formatted field field--name-field-sub-title field--type-text field--label-hidden field__item"><p>because simplicity is best</p>
+</div>
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><h1>Introduction</h1>
+
+<p>This neuron allow <a href="http://github.com/kalliope-project/kalliope">Kalliope</a> to manage todolists. It leverages the <a href="http://todotxt.com">todotxt</a> methodology and rules.</p>
+
+<p>With the current state of the neuron, you'll be able to list (and filter), add and delete tasks in your todolists.</p>
+
+<h1>Why todotxt ?</h1>
+
+<h2>Ways of managing a todolist with Kalliope:</h2>
+
+<p>As of no todolist neuron exists so far, I needed to created this feature from scratch. I had the following possibilities:</p>
+
+<ul><li>Saas "fashion" offering like <a href="">remember the milk</a>, <a href="https://keep.google.com">Google keep</a>, <a href="https://calendar.google.com">Google calendar tasks</a> or even <a href="https://evernote.com">evernote</a></li>
+<li>Local todolist application like <a href="http://todolist.site/">Todolist</a> or <a href="https://taskwarrior.org/">Taskwarrior</a></li>
+<li>Self hosted todolist server app like taskwarrior <a href="https://taskwarrior.org/docs/taskserver/setup.html">taskwarrior server</a></li>
+<li>Simple text file</li>
+<li>I'm sure a lot of other way</li>
+</ul><p>All of them have advantages and drawbacks, but I had personal requirements:</p>
+
+<ul><li>Open Source software (what else…)</li>
+<li>Data privacy (keeping my todolist mine)</li>
+<li>Simplicity (I won't manage reporting, diagram and very complex tasks via Kalliope)</li>
+</ul><h2>The choice</h2>
+
+<p>Looking at the lists of options and requirements above, only 2 options were attractive to me:</p>
+
+<ul><li>Taskwarrior + taskwarrior server: this was my main idea for a long time, as a previous long time user of Taskwarrior. This todolist tool is extremely powerful and can manage all aspects of a todolist as well as creating reports etc. Cli is very complete (and can be complex if you have a lot of arguments / commands) but it for me the "Rolls-Royce" of cli todolist tools. The server setup and a full configuration can takes a bit of time though.</li>
+<li>Simple text file: I like the idea but lacked flexibility. It would have meant simple file per todo list (one for groceries, one for reminders, …), but the integration with Kalliope would be simple ass reading/writing a text file. As well, a text file can be read on any devices without a required application being installed. Sharing text file todolists is simple (eg: mail, scp, rsync, … ) But that will be part of another blog post about how I manage my grocery lists via Kalliope.</li>
+</ul><h2>The solution: todotxt !</h2>
+
+<p>If I had 2 words to describe todotxt, it would be : <strong>simply powerful</strong></p>
+
+<p>Todotxt is simple concept (not even an software per say) to manage todolists via a single text files, with only a very small set of rules for writing tasks in it. I encourage you to go to <a href="https://todotxt.com">their website</a> and learn about it, it will take you 5 minutes to understand the full concept. You can find the rules set <a href="https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format">here</a> and an example of a <a href="http://todotxt.com/todo.txt">todotxt file here</a></p>
+
+<p>If you already use todotxt or like its simplicity, this neuron is for you.</p>
+
+<p>As well, if you don't really care about sharing Kalliope's todolist on the cloud or with your other devices and use other todolist app for your own work/personal todolist, you can of course leverage this neuron as well :)</p>
+
+<h1>The neuron</h1>
+
+<h2>What it does</h2>
+
+<ul><li>Manage tasks based on todotxt model: priority, project, context, completeness</li>
+<li>List / filter items from todotxt files</li>
+<li>Add elements to list (with arguments like priority and projects)</li>
+</ul><h2>What it could do in future release</h2>
+
+<ul><li>Get / Delete searched entry</li>
+<li>Mark as complete / Update tasks (instead of delete)</li>
+<li>Manage multi projects and contexts in order.</li>
+</ul><h2>Installation</h2>
+
+<p>Usual Kallipoe way:</p>
+
+<pre><code class="bash">kalliope start install --git-url https://github.com/bacardi55/kalliope-todotxt.git
+</code></pre>
+
+<h2>Configuration</h2>
+
+<p>As usual, the <a href="https://github.com/bacardi55/kalliope-todotxt/blob/master/README.md">README</a> is the most up to date documentation about arguments / return values.</p>
+
+<h3>arguments:</h3>
+
+<table><thead><tr><th>parameter</th>
+  <th>required</th>
+  <th>default</th>
+  <th>choices</th>
+  <th>comments</th>
+</tr></thead><tbody><tr><td>action</td>
+  <td>yes</td>
+  <td></td>
+  <td>'get', 'add' or 'del'</td>
+  <td>The action to launch</td>
+</tr><tr><td>todotxt_file</td>
+  <td>yes</td>
+  <td></td>
+  <td>String</td>
+  <td>The path to the todotxt file</td>
+</tr><tr><td>priority</td>
+  <td>No</td>
+  <td></td>
+  <td>'A', 'B' or 'C'</td>
+  <td>The priority of the task</td>
+</tr><tr><td>project</td>
+  <td>No</td>
+  <td></td>
+  <td>String</td>
+  <td>The project of the task</td>
+</tr><tr><td>context</td>
+  <td>No</td>
+  <td></td>
+  <td>String</td>
+  <td>The context of the task</td>
+</tr><tr><td>complete</td>
+  <td>No</td>
+  <td>False</td>
+  <td>Boolean: False or True</td>
+  <td>If the task is complete or not</td>
+</tr><tr><td>content</td>
+  <td>No</td>
+  <td></td>
+  <td>String</td>
+  <td>The content of the task</td>
+</tr></tbody></table><p><strong>Additional notes:</strong></p>
+
+<ul><li>If action is 'add':
+
+<ul><li>Content argument is mandatory</li>
+<li>Priority/context/complete/projects will be added in the raw line in text file</li>
+</ul></li>
+<li>If action is 'get', adding priority / project / context will filter the results (see brain example below)</li>
+<li>If action is 'del', every tasks that match the given priority/project/context will be deleted.</li>
+</ul><h3>Return values:</h3>
+
+<p>Only necessary when the neuron use a template to say something</p>
+
+<table><thead><tr><th>name</th>
+  <th>description</th>
+  <th>type</th>
+  <th>sample</th>
+</tr></thead><tbody><tr><td>action</td>
+  <td>The action launched</td>
+  <td>string</td>
+  <td>'get', 'del' or 'add'</td>
+</tr><tr><td>task_list</td>
+  <td>list of tasks (for get action only)</td>
+  <td>list of tasks</td>
+  <td>[task1, taks2, task3].</td>
+</tr><tr><td>count</td>
+  <td>The number of returned element</td>
+  <td>Integer</td>
+  <td>2</td>
+</tr><tr><td>added_task</td>
+  <td>string value</td>
+  <td>Task object¹</td>
+  <td>Task object¹</td>
+</tr></tbody></table><p><strong>Additional notes:</strong></p>
+
+<ul><li>If action is 'get':
+
+<ul><li>Count contains the number of return tasks in tasks_lists</li>
+<li>Task_lists contains the list of task object¹</li>
+<li>add_task is unset</li>
+</ul></li>
+<li>If action is 'del':
+
+<ul><li>Count contains the number of deleted tasks</li>
+<li>added_task is unset</li>
+<li>task_list is unset</li>
+</ul></li>
+<li>If action is 'add':
+
+<ul><li>Count is unset</li>
+<li>added_task contain a Task object¹</li>
+<li>task_list is empty</li>
+</ul></li>
+</ul><p><strong>Task Object:</strong> The task object contains the following properties:</p>
+
+<ul><li>Task.raw: the raw line representing the task in the todotxt file.</li>
+<li>Task.task_id: The task id (number of line)</li>
+<li>Task.task: The cleaned text of a text</li>
+<li>Task.priority: The priority</li>
+<li>Task.project: A list of project name</li>
+<li>Task.context = A list of context name</li>
+<li>Task.creation_date: Creation date if precised</li>
+<li>Task.complete: Is the task complete?</li>
+<li>Task.completion_date: Completion date if completed task</li>
+<li>Task.due_date: Due date if precised.</li>
+</ul><p>You can reuse all these properties in <code>template_file</code> or <code>file_template</code> for each task objects (added_task or each element of task_list).</p>
+
+<h3>Brain examples</h3>
+
+<p>Get tasks, no filter.</p>
+
+<pre><code class="yaml">  - name: "Get-all-tasks"
+    signals:
+      - order: "Get all my tasks"
+    neurons:
+      - todotxt:
+          action: "get"
+          todotxt_file: "resources/neurons/todotxt/samples/todo.txt"
+          file_template: "templates/en_todotxt.j2"
+</code></pre>
+
+<p>Get tasks with specific filters</p>
+
+<pre><code class="yaml">  - name: "Get-specific-items"
+    signals:
+      - order: "Get my super list"
+    neurons:
+      - todotxt:
+          action: "get"
+          todotxt_file: "resources/neurons/todotxt/samples/todo.txt"
+          project: "project"
+          priority: "A"
+          context: "context"
+          complete: False
+          file_template: "templates/en_todotxt.j2"
+</code></pre>
+
+<p>Add item to list</p>
+
+<pre><code class="yaml">  - name: "add-item-to-super-list"
+    signals:
+      - order: "add  to the super list"
+    neurons:
+      - todotxt:
+          action: "add"
+          todotxt_file: "resources/neurons/todotxt/samples/todo.txt"
+          project: "project"
+          priority: "A"
+          context: "context"
+          complete: False
+          args:
+              - content
+          say_template: "Task  has been added to the super project with priority "
+</code></pre>
+
+<p>You could also add arguments with value coming from voice order directly:</p>
+
+<pre><code class="yaml">  - name: "add-item-to-super-list"
+    signals:
+      - order: "add  to the  list with priority  and context "
+    neurons:
+      - todotxt:
+          action: "add"
+          todotxt_file: "resources/neurons/todotxt/samples/todo.txt"
+          complete: False
+          args:
+              - content
+              - project: "project"
+              - priority: "A"
+              - context: "context"
+          say_template: "Task  has been added to the super project with priority "
+</code></pre>
+
+<p>Remove items that match filters from global list .</p>
+
+<pre><code class="yaml">  - name: "clear-super-list"
+    signals:
+      - order: "clear super list"
+    neurons:
+      - todotxt:
+          action: "del"
+          todotxt_file: "resources/neurons/todotxt/samples/todo.txt"
+          project: "project"
+          priority: "A"
+          context: "context"
+          complete: False
+          say_template: "8 items have been deleted"
+</code></pre>
+
+<h3>Template examples</h3>
+
+<pre><code>
+    Your list contains:
+    
+
+</code></pre>
+
+<p>Or you can simply use the <code>say_template</code> argument, eg for adding a task:</p>
+
+<pre><code class="yaml">say_template: "Task  has been added to the grocery list"
+</code></pre>
+
+<p>As usual, the <a href="https://github.com/bacardi55/kalliope-todotxt/tree/master/samples">sample directory</a> contains more example of brains and templates.</p>
+</div>
+      <div class="field field--name-field-tags field--type-entity-reference field--label-hidden clearfix">
+    <ul class="links field__items"><li><a href="http://bacardi55.org/en/term/kalliope" hreflang="en">kalliope</a></li>
+      </ul></div>
+<section class="field field--name-field-comments field--type-comment field--label-above comment-wrapper"><h2 class="title comment-form__title">Add new comment</h2>
+    <drupal-render-placeholder callback="comment.lazy_builders:renderForm" arguments="0=node&1=36&2=field_comments&3=blog_comments" token="3244fcb7"></drupal-render-placeholder></section>

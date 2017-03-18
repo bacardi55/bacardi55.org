@@ -1,0 +1,55 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Bacardi55's random notes
+author: Bacardi55
+description: > # this means to ignore newlines until "baseurl:"
+  This is a small place on the Internet where I talk about stuff…
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://bacardi55.org" # the base hostname & protocol for your site, e.g. http://example.com
+author: bacardi55
+twitter_username: bacardi555
+github_username:  bacardi55
+
+# Build settings
+#theme: clean-jekyll-theme
+theme: minima
+show_downloads: "false"
+
+markdown: kramdown
+kramdown:
+    input: GFM
+    hard_wrap: true
+
+gems:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+permalink: /:year/:month/:day/:title.html
+
+paginate: 15
+paginate_path: "blog/page:num"
+
+social:
+  name: Bacardi55
+  links:
+    - https://twitter.com/bacardi555
+    - https://github.com/bacardi55
