@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-18T05:31:38+01:00</updated><id>http://localhost:4000/</id><title type="html">Bacardi55’s random notes</title><subtitle>This is a small place on the Internet where I talk about stuff…
-</subtitle><author><name>Bacardi55</name></author><entry><title type="html">Managing a shopping list with Kalliope</title><link href="http://localhost:4000/2017/03/16/managing-a-shopping-list-with-kalliope.html" rel="alternate" type="text/html" title="Managing a shopping list with Kalliope" /><published>2017-03-16T00:00:00+01:00</published><updated>2017-03-16T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/16/managing-a-shopping-list-with-kalliope</id><content type="html" xml:base="http://localhost:4000/2017/03/16/managing-a-shopping-list-with-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="http://bacardi55.org/feed.xml" rel="self" type="application/atom+xml" /><link href="http://bacardi55.org/" rel="alternate" type="text/html" /><updated>2017-03-18T05:55:22+01:00</updated><id>http://bacardi55.org/</id><title type="html">Bacardi55’s random notes</title><subtitle>This is a small place on the Internet where I talk about stuff…
+</subtitle><author><name>bacardi55</name></author><entry><title type="html">Switching back to static html</title><link href="http://bacardi55.org/2017/03/18/switching-back-to-static-html.html" rel="alternate" type="text/html" title="Switching back to static html" /><published>2017-03-18T00:00:00+01:00</published><updated>2017-03-18T00:00:00+01:00</updated><id>http://bacardi55.org/2017/03/18/switching-back-to-static-html</id><content type="html" xml:base="http://bacardi55.org/2017/03/18/switching-back-to-static-html.html">&lt;p&gt;Quick note to say I’ve switched back to static html site, managed (this time) by &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt; :).&lt;/p&gt;
+
+&lt;p&gt;The reason behind that is simple: it’s way easier to maintain and &lt;strong&gt;secure&lt;/strong&gt; a stack for html files than php or other :).&lt;/p&gt;
+
+&lt;p&gt;And even though I enabled the markdown text format, I still feel more comfortable writing in vim and commiting blog post like code via git (:&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="blabla" /><summary type="html">Quick note to say I’ve switched back to static html site, managed (this time) by jekyll :).</summary></entry><entry><title type="html">Managing a shopping list with Kalliope</title><link href="http://bacardi55.org/2017/03/16/managing-a-shopping-list-with-kalliope.html" rel="alternate" type="text/html" title="Managing a shopping list with Kalliope" /><published>2017-03-16T00:00:00+01:00</published><updated>2017-03-16T00:00:00+01:00</updated><id>http://bacardi55.org/2017/03/16/managing-a-shopping-list-with-kalliope</id><content type="html" xml:base="http://bacardi55.org/2017/03/16/managing-a-shopping-list-with-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;This neuron allow &lt;a href=&quot;http://github.com/kalliope-project/kalliope&quot;&gt;Kalliope&lt;/a&gt; to manage todolists. It leverages the &lt;a href=&quot;http://todotxt.com&quot;&gt;todotxt&lt;/a&gt; methodology and rules.&lt;/p&gt;
 
@@ -398,7 +402,7 @@
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{added_task.task}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;has&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;been&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;added&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;grocery&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;As usual, the &lt;a href=&quot;https://github.com/bacardi55/kalliope-todotxt/tree/master/samples&quot;&gt;sample directory&lt;/a&gt; contains more example of brains and templates.&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="todotxt" /><summary type="html">Introduction</summary></entry><entry><title type="html">Entering the domotic game</title><link href="http://localhost:4000/2017/03/15/entering-the-domotic-game.html" rel="alternate" type="text/html" title="Entering the domotic game" /><published>2017-03-15T00:00:00+01:00</published><updated>2017-03-15T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/15/entering-the-domotic-game</id><content type="html" xml:base="http://localhost:4000/2017/03/15/entering-the-domotic-game.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;As usual, the &lt;a href=&quot;https://github.com/bacardi55/kalliope-todotxt/tree/master/samples&quot;&gt;sample directory&lt;/a&gt; contains more example of brains and templates.&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="todotxt" /><summary type="html">Introduction</summary></entry><entry><title type="html">Entering the domotic game</title><link href="http://bacardi55.org/2017/03/15/entering-the-domotic-game.html" rel="alternate" type="text/html" title="Entering the domotic game" /><published>2017-03-15T00:00:00+01:00</published><updated>2017-03-15T00:00:00+01:00</updated><id>http://bacardi55.org/2017/03/15/entering-the-domotic-game</id><content type="html" xml:base="http://bacardi55.org/2017/03/15/entering-the-domotic-game.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;So far, most of the things I do with Kalliope could be considered as not really domitic (maybe more domogeek ^^).&lt;/p&gt;
 
@@ -521,13 +525,13 @@
 
 &lt;p&gt;As I said above, there are a lot to be able to do: set on/off devices, get / set scenes and groups, … A lot of fun to have marrying Kalliopé and domoticz :)&lt;/p&gt;
 
-&lt;p&gt;Stay tuned!&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="domoticz" /><summary type="html">Introduction</summary></entry><entry><title type="html">Update Linux Clock While Travelling</title><link href="http://localhost:4000/2017/03/07/update-linux-clock-while-travelling.html" rel="alternate" type="text/html" title="Update Linux Clock While Travelling" /><published>2017-03-07T00:00:00+01:00</published><updated>2017-03-07T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/07/update-linux-clock-while-travelling</id><content type="html" xml:base="http://localhost:4000/2017/03/07/update-linux-clock-while-travelling.html">&lt;hr /&gt;
+&lt;p&gt;Stay tuned!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="domoticz" /><summary type="html">Introduction</summary></entry><entry><title type="html">Update Linux Clock While Travelling</title><link href="http://bacardi55.org/2017/03/07/update-linux-clock-while-travelling.html" rel="alternate" type="text/html" title="Update Linux Clock While Travelling" /><published>2017-03-07T00:00:00+01:00</published><updated>2017-03-07T00:00:00+01:00</updated><id>http://bacardi55.org/2017/03/07/update-linux-clock-while-travelling</id><content type="html" xml:base="http://bacardi55.org/2017/03/07/update-linux-clock-while-travelling.html">&lt;hr /&gt;
 &lt;p&gt;layout: post&lt;br /&gt;
 title: Update linux clock when travelling&lt;br /&gt;
 subtitle: “”&lt;br /&gt;
 categorie: “tips”&lt;/p&gt;
 
-&lt;p&gt;Cool tool if you often travel and that need to change time/date : &lt;a href=&quot;https://github.com/cdown/tzupdate&quot;&gt;tzupdate&lt;/a&gt;&lt;/p&gt;</content><author><name>Bacardi55</name></author><summary type="html">layout: post title: Update linux clock when travelling subtitle: “” categorie: “tips”</summary></entry><entry><title type="html">Todotxt, a neuron to manage todolist compatible with todotxt format!</title><link href="http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html" rel="alternate" type="text/html" title="Todotxt, a neuron to manage todolist compatible with todotxt format!" /><published>2017-02-28T00:00:00+01:00</published><updated>2017-02-28T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format</id><content type="html" xml:base="http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Cool tool if you often travel and that need to change time/date : &lt;a href=&quot;https://github.com/cdown/tzupdate&quot;&gt;tzupdate&lt;/a&gt;&lt;/p&gt;</content><author><name>bacardi55</name></author><summary type="html">layout: post title: Update linux clock when travelling subtitle: “” categorie: “tips”</summary></entry><entry><title type="html">Todotxt, a neuron to manage todolist compatible with todotxt format!</title><link href="http://bacardi55.org/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html" rel="alternate" type="text/html" title="Todotxt, a neuron to manage todolist compatible with todotxt format!" /><published>2017-02-28T00:00:00+01:00</published><updated>2017-02-28T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format</id><content type="html" xml:base="http://bacardi55.org/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;As promised in my &lt;a href=&quot;/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html&quot;&gt;todotxt neuron post&lt;/a&gt;, here is a post about how I managed my todolist via &lt;a href=&quot;https://kalliope-project.github.io/&quot;&gt;Kalliope&lt;/a&gt; !&lt;/p&gt;
 
@@ -758,7 +762,7 @@ optional arguments:
           &lt;span class=&quot;s&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;script/mail_grocery.sh&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;And you should be all set !&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home" /><category term="automotation" /><category term="todotxt" /><summary type="html">Introduction</summary></entry><entry><title type="html">Monitor and restart Kalliope via a led and a push button</title><link href="http://localhost:4000/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button.html" rel="alternate" type="text/html" title="Monitor and restart Kalliope via a led and a push button" /><published>2017-02-24T00:00:00+01:00</published><updated>2017-02-24T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button</id><content type="html" xml:base="http://localhost:4000/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;And you should be all set !&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home" /><category term="automotation" /><category term="todotxt" /><summary type="html">Introduction</summary></entry><entry><title type="html">Monitor and restart Kalliope via a led and a push button</title><link href="http://bacardi55.org/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button.html" rel="alternate" type="text/html" title="Monitor and restart Kalliope via a led and a push button" /><published>2017-02-24T00:00:00+01:00</published><updated>2017-02-24T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button</id><content type="html" xml:base="http://bacardi55.org/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Tonight, I wanted to play a bit with my old raspberry pi B+ that I wasn’t using anymore.&lt;/p&gt;
 
@@ -842,11 +846,11 @@ optional arguments:
            └─8349 /usr/bin/python /home/pi/scripts/emergency_button.py&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;And normally everything should go smoothly, and each time the red led is on, just press the button to restart the whole shebang!&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Ssmtp and password containing</title><link href="http://localhost:4000/2017/02/23/ssmtp-password-with.html" rel="alternate" type="text/html" title="Ssmtp and password containing" /><published>2017-02-23T00:00:00+01:00</published><updated>2017-02-23T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/23/ssmtp-password-with</id><content type="html" xml:base="http://localhost:4000/2017/02/23/ssmtp-password-with.html">&lt;p&gt;Quick note as a “note to self”, do &lt;em&gt;not&lt;/em&gt; use # in AuthPass with ssmtp!&lt;/p&gt;
+&lt;p&gt;And normally everything should go smoothly, and each time the red led is on, just press the button to restart the whole shebang!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Ssmtp and password containing</title><link href="http://bacardi55.org/2017/02/23/ssmtp-password-with.html" rel="alternate" type="text/html" title="Ssmtp and password containing" /><published>2017-02-23T00:00:00+01:00</published><updated>2017-02-23T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/23/ssmtp-password-with</id><content type="html" xml:base="http://bacardi55.org/2017/02/23/ssmtp-password-with.html">&lt;p&gt;Quick note as a “note to self”, do &lt;em&gt;not&lt;/em&gt; use # in AuthPass with ssmtp!&lt;/p&gt;
 
 &lt;p&gt;https://bugs.debian.org/cgi-bin/pkgreport.cgi?repeatmerged=no&amp;amp;src=ssmtp#_0_3_4&lt;/p&gt;
 
-&lt;p&gt;https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=544018&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="ssmtp" /><category term="tips" /><summary type="html">Quick note as a “note to self”, do not use # in AuthPass with ssmtp!</summary></entry><entry><title type="html">Opening Tv show episode via Kalliope</title><link href="http://localhost:4000/2017/02/22/opening-tv-show-episode-via-kalliope.html" rel="alternate" type="text/html" title="Opening Tv show episode via Kalliope" /><published>2017-02-22T00:00:00+01:00</published><updated>2017-02-22T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/22/opening-tv-show-episode-via-kalliope</id><content type="html" xml:base="http://localhost:4000/2017/02/22/opening-tv-show-episode-via-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=544018&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="ssmtp" /><category term="tips" /><summary type="html">Quick note as a “note to self”, do not use # in AuthPass with ssmtp!</summary></entry><entry><title type="html">Opening Tv show episode via Kalliope</title><link href="http://bacardi55.org/2017/02/22/opening-tv-show-episode-via-kalliope.html" rel="alternate" type="text/html" title="Opening Tv show episode via Kalliope" /><published>2017-02-22T00:00:00+01:00</published><updated>2017-02-22T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/22/opening-tv-show-episode-via-kalliope</id><content type="html" xml:base="http://bacardi55.org/2017/02/22/opening-tv-show-episode-via-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Today, a quick blog post about something I’ve put in place when I started playing with Kalliopé: asking kalliope to read videos from me.&lt;/p&gt;
 
@@ -972,7 +976,7 @@ The script would then look over ssh to find the file name and then run a request
 
 &lt;p&gt;Maybe I should PR it again to add the ability to pass unlimited number of arguments that will be send to the shell script … But that then raise questions of orders, options, …&lt;/p&gt;
 
-&lt;p&gt;I hope this will work for you as well so you will be able to fire tv show episode without looking at your remote!&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="kodi" /><summary type="html">Introduction</summary></entry><entry><title type="html">Kalliope system status neuron</title><link href="http://localhost:4000/2017/02/21/kalliope-system-status-neuron.html" rel="alternate" type="text/html" title="Kalliope system status neuron" /><published>2017-02-21T00:00:00+01:00</published><updated>2017-02-21T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/21/kalliope-system-status-neuron</id><content type="html" xml:base="http://localhost:4000/2017/02/21/kalliope-system-status-neuron.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;I hope this will work for you as well so you will be able to fire tv show episode without looking at your remote!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="kodi" /><summary type="html">Introduction</summary></entry><entry><title type="html">Kalliope system status neuron</title><link href="http://bacardi55.org/2017/02/21/kalliope-system-status-neuron.html" rel="alternate" type="text/html" title="Kalliope system status neuron" /><published>2017-02-21T00:00:00+01:00</published><updated>2017-02-21T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/21/kalliope-system-status-neuron</id><content type="html" xml:base="http://bacardi55.org/2017/02/21/kalliope-system-status-neuron.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Couple of days ago, I created a very simple neuron to retrieve some system data and have an idea of the system kalliope runs on. It was in the same idea of the &lt;a href=&quot;node/31&quot;&gt;poorsman loganalyser I talked about before&lt;/a&gt;.&lt;/p&gt;
 
@@ -1025,7 +1029,7 @@ The script would then look over ssh to find the file name and then run a request
 
 &lt;p&gt;Or create a more complex template :)&lt;/p&gt;
 
-&lt;p&gt;I’ll add more into this, but if you have idea, PR on github or comment on this post :)&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Kalliope GoogleMaps neuron</title><link href="http://localhost:4000/2017/02/21/kalliope-googlemaps-neuron.html" rel="alternate" type="text/html" title="Kalliope GoogleMaps neuron" /><published>2017-02-21T00:00:00+01:00</published><updated>2017-02-21T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/21/kalliope-googlemaps-neuron</id><content type="html" xml:base="http://localhost:4000/2017/02/21/kalliope-googlemaps-neuron.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;I’ll add more into this, but if you have idea, PR on github or comment on this post :)&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Kalliope GoogleMaps neuron</title><link href="http://bacardi55.org/2017/02/21/kalliope-googlemaps-neuron.html" rel="alternate" type="text/html" title="Kalliope GoogleMaps neuron" /><published>2017-02-21T00:00:00+01:00</published><updated>2017-02-21T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/21/kalliope-googlemaps-neuron</id><content type="html" xml:base="http://bacardi55.org/2017/02/21/kalliope-googlemaps-neuron.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;If you follow me on twitter or github, you may have seen this new neuron coming, otherwise, let me introduce to you the &lt;a href=&quot;https://github.com/bacardi55/kalliope-gmaps&quot;&gt;Google Maps neuron&lt;/a&gt; :)&lt;/p&gt;
 
@@ -1192,94 +1196,4 @@ Read the &lt;a href=&quot;https://github.com/bacardi55/kalliope-gmaps/blob/maste
   &lt;li&gt;Leverage more API from google maps&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;As always, ideas or pull requests are more than welcome!&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Kalliope - a poorsman log analyser</title><link href="http://localhost:4000/2017/02/21/kalliope-a-poorsman-log-analyser.html" rel="alternate" type="text/html" title="Kalliope - a poorsman log analyser" /><published>2017-02-21T00:00:00+01:00</published><updated>2017-02-21T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/21/kalliope-a-poorsman-log-analyser</id><content type="html" xml:base="http://localhost:4000/2017/02/21/kalliope-a-poorsman-log-analyser.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Today, I wanted to have a quick overview of my Kalliope usage. I have more and more neurons available and more and more configured synapses so I thought it could be cool to start having some data.&lt;/p&gt;
-
-&lt;p&gt;I didn’t want to put in place some heavy log analyser or sort, a simple bash script would do the trick.&lt;/p&gt;
-
-&lt;p&gt;Of course, I also wanted the output interface to be Kalliope as well (:&lt;/p&gt;
-
-&lt;h2 id=&quot;how&quot;&gt;How&lt;/h2&gt;
-
-&lt;h3 id=&quot;generate-log-with-kalliope&quot;&gt;Generate log with kalliope&lt;/h3&gt;
-
-&lt;p&gt;By default, logs are just the output of Kalliope and are not stored in logs. So instead of implementing something within Kalliope, I thought it would be easier to just launch kalliope and push the output into a log file. I also wanted to still be able to see the logs in the terminal I launched Kalliope with.&lt;/p&gt;
-
-&lt;p&gt;Normally, a simple&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; | tee output.log&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Should be enough, but because it is a python script, you actually need to launch Kalliope like this:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;/usr/bin/python -u /usr/local/bin/kalliope start | tee -a kalliope.log &lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;read-logs&quot;&gt;Read logs&lt;/h3&gt;
-
-&lt;p&gt;I then created the simplest shell script possible. Can be found in &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55&quot;&gt;my kalliope starter kit&lt;/a&gt; &lt;a href=&quot;https://github.com/bacardi55/kalliope-starter55/blob/master/script/poorsmanloganalyser.sh&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c&quot;&gt;##!/bin/bash&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;## You need to have kalliope logs available. To do so, I run kalliope like this:&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;## /usr/bin/python -u /usr/local/bin/kalliope start | tee -a kalliope.log&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;## So that logs are still displayed on standard output and in a log file&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;## Edit the audio variable text to use the variable as needed. Kalliope will read the content of the audio variable (output of the script)&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;LOG_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/home/pi/kalliope_config/kalliope.log&quot;&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;nb_trigger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;cat &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | grep &lt;span class=&quot;s2&quot;&gt;&quot;Say something!&quot;&lt;/span&gt; | wc -l&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;nb_match&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;cat &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | grep &lt;span class=&quot;s2&quot;&gt;&quot;Order matched in the brain&quot;&lt;/span&gt; | wc -l&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;nb_audio_issue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;cat &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | grep &lt;span class=&quot;s2&quot;&gt;&quot;Google Speech Recognition could not understand audio&quot;&lt;/span&gt; | wc -l&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;nb_no_synapse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;cat &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | grep &lt;span class=&quot;s2&quot;&gt;&quot;No synapse match the captured order&quot;&lt;/span&gt; | wc -l&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;audio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;As far as I remember, &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nb_trigger&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; vocal orders have been triggered, I didn't understood &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nb_no_synapse&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; of them and had an audio issue for &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$nb_audio_issue&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; of them&quot;&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$audio&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;basically looking in the output the number of line matching some patterns triggered by Kalliopé.&lt;/p&gt;
-
-&lt;p&gt;The content of the audio variable is the text that will be read by Kalliope.&lt;/p&gt;
-
-&lt;h3 id=&quot;create-your-brain&quot;&gt;Create your brain&lt;/h3&gt;
-
-&lt;p&gt;Now that you have the log generated, and the script to read them, you need to create the brain that will fire a simple shell script and read the output.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;System-status&quot;&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Step&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;into&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;analysis&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;mode,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;please&quot;&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;cmd&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sh&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;script/poorsmanloganalyser.sh&quot;&lt;/span&gt;
-          &lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;And now you can have some numbers (:&lt;/p&gt;</content><author><name>Bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry></feed>
+&lt;p&gt;As always, ideas or pull requests are more than welcome!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry></feed>
