@@ -2,6 +2,7 @@
 layout: post
 title: Switching back to static html
 tags: blabla
+date: 2017-03-18 05:00:00 +0100
 ---
 
 Quick note to say I've switched back to static html site, managed (this time) by [jekyll](https://jekyllrb.com/) :).
