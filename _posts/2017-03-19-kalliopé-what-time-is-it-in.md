@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Kalliopé, what time is it in …
-subtile: "Useful when you work with multiple country and timezone!"
+subtitle: "Useful when you work with multiple country and timezone!"
 tags: kalliope home_automation gmaps
 ---
 
@@ -10,7 +10,7 @@ tags: kalliope home_automation gmaps
 
 When you work with multiple country and different timezone, you're always wondering what time it is there… And I was fed up to keep opening a tab in a browser to find out again and again.
 
-So I decided to create a kalliopé neuron to be able to ask [kalliopé](https://kalliope-project.github.io/) what time it is in any city / country :)
+So I decided to create a kalliopé neuron to be able to ask [kalliopé](https://kalliope-project.github.io/) what time it is in any city / country :) and I create the [wwtime neuron]https://github.com/bacardi55/kalliope-wwtime() to do so!
 
 ### How
 
@@ -114,8 +114,4 @@ Get a city by argument set in brain:
 {% endhighlight %}
 
 see more example in the [sample directory](https://github.com/bacardi55/kalliope-wwtime/blob/master/samples/)
-
-
-* [my posts about kalliope](http://bacardi55.org/kalliope.html)
-
 
