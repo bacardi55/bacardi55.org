@@ -1,5 +1,182 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="http://bacardi55.org/feed.xml" rel="self" type="application/atom+xml" /><link href="http://bacardi55.org/" rel="alternate" type="text/html" /><updated>2017-03-18T15:01:36+01:00</updated><id>http://bacardi55.org/</id><title type="html">Bacardi55’s random notes</title><subtitle>This is a small place on the Internet where I talk about stuff…
-</subtitle><author><name>bacardi55</name></author><entry><title type="html">An Uber neuron for Kalliope</title><link href="http://bacardi55.org/2017/03/18/an-uber-neuron-for-kalliope.html" rel="alternate" type="text/html" title="An Uber neuron for Kalliope" /><published>2017-03-18T14:30:00+01:00</published><updated>2017-03-18T14:30:00+01:00</updated><id>http://bacardi55.org/2017/03/18/an-uber-neuron-for-kalliope</id><content type="html" xml:base="http://bacardi55.org/2017/03/18/an-uber-neuron-for-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-19T01:03:29+01:00</updated><id>http://localhost:4000/</id><title type="html">Bacardi55’s random notes</title><subtitle>This is a small place on the Internet where I talk about stuff…
+</subtitle><author><name>bacardi55</name></author><entry><title type="html">Kalliopé, what time is it in …</title><link href="http://localhost:4000/2017/03/19/kalliop%C3%A9-what-time-is-it-in.html" rel="alternate" type="text/html" title="Kalliopé, what time is it in …" /><published>2017-03-19T00:00:00+01:00</published><updated>2017-03-19T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/19/kalliop%C3%A9-what-time-is-it-in</id><content type="html" xml:base="http://localhost:4000/2017/03/19/kalliop%C3%A9-what-time-is-it-in.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;When you work with multiple country and different timezone, you’re always wondering what time it is there… And I was fed up to keep opening a tab in a browser to find out again and again.&lt;/p&gt;
+
+&lt;p&gt;So I decided to create a kalliopé neuron to be able to ask &lt;a href=&quot;https://kalliope-project.github.io/&quot;&gt;kalliopé&lt;/a&gt; what time it is in any city / country :) and I create the [wwtime neuron]https://github.com/bacardi55/kalliope-wwtime() to do so!&lt;/p&gt;
+
+&lt;h3 id=&quot;how&quot;&gt;How&lt;/h3&gt;
+
+&lt;h4 id=&quot;getting-timezone-for-address&quot;&gt;Getting timezone for address&lt;/h4&gt;
+
+&lt;p&gt;This neuron will retrieve a local timezone and a requested city timezone. It compares timezone difference (including summer time) between the two location to give you the time there based on your timezone.&lt;/p&gt;
+
+&lt;p&gt;Eg:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I am in Paris (GMT +1)&lt;/li&gt;
+  &lt;li&gt;I want to know Boston time (GMT -5 - and as of now - summer time (so 1 additional hour))&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When it’s 10pm in Paris, Kalliope will tell me it is 5pm in Boston (because as of now, boston is in summer time and paris not yet, so -5 and not -6)&lt;/p&gt;
+
+&lt;p&gt;It uses GoogleMaps API to get geolocation data based on a city name or address. So you need to activate to Google API:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/maps/documentation/timezone/intro&quot;&gt;Google Maps Time Zone API&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/maps/documentation/geocoding/intro&quot;&gt;Google Maps Geocoding API&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To make it works, you will need to get an API key on your &lt;a href=&quot;https://console.developers.google.com/apis/dashboard&quot;&gt;developer console&lt;/a&gt;.&lt;br /&gt;
+Or follow &lt;a href=&quot;https://developers.google.com/maps/documentation/geocoding/get-api-key&quot;&gt;documentation here&lt;/a&gt; and &lt;a href=&quot;https://developers.google.com/maps/documentation/timezone/get-api-key&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;installation&quot;&gt;Installation&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;kalliope install --git-url https://github.com/bacardi55/kalliope-wwtimes.git&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;options&quot;&gt;Options&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;parameter&lt;/th&gt;
+      &lt;th&gt;required&lt;/th&gt;
+      &lt;th&gt;default&lt;/th&gt;
+      &lt;th&gt;choices&lt;/th&gt;
+      &lt;th&gt;comment&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;gmaps_api_key&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;string&lt;/td&gt;
+      &lt;td&gt;The api key to use googlemaps API. See above.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;local&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;string&lt;/td&gt;
+      &lt;td&gt;Your city/address to compare time difference with&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;city&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;string&lt;/td&gt;
+      &lt;td&gt;What city/address where you want to know time&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;return-values&quot;&gt;Return Values&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+      &lt;th&gt;Type&lt;/th&gt;
+      &lt;th&gt;sample&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;status&lt;/td&gt;
+      &lt;td&gt;Response status&lt;/td&gt;
+      &lt;td&gt;String&lt;/td&gt;
+      &lt;td&gt;OK or KO&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;city&lt;/td&gt;
+      &lt;td&gt;A dict¹ (see below)&lt;/td&gt;
+      &lt;td&gt;dict&lt;/td&gt;
+      &lt;td&gt;[arg: ‘new york city’, ‘timezoneid’: ‘America/New_York’, ‘timezonename’: ‘Eastern Daylight Time’, time: {‘hour’: ‘10’, ‘minute’: ‘30’}]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;local&lt;/td&gt;
+      &lt;td&gt;A dict¹ (see below)&lt;/td&gt;
+      &lt;td&gt;dict&lt;/td&gt;
+      &lt;td&gt;[arg: ‘Paris France’, ‘timezoneid’: ‘Europe/Paris’, ‘timezonename’: ‘Central European Standard Time’, time: {‘hour’: ‘10’, ‘minute’: ‘30’}]&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;¹: these dict contains:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;arg: The given name in arguments (equals ‘local’ argument for local return variable or ‘city’ arguments for city return variable)&lt;/li&gt;
+  &lt;li&gt;timezoneid: The ID of the timezone, eg: Europe/Paris&lt;/li&gt;
+  &lt;li&gt;timezonename: The name of the timezone eg: Central European Standard Time&lt;/li&gt;
+  &lt;li&gt;time, a dict containing ‘hour’ and ‘minutes’&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;synapses-example&quot;&gt;Synapses example&lt;/h3&gt;
+
+&lt;h4 id=&quot;brains&quot;&gt;brains&lt;/h4&gt;
+
+&lt;p&gt;Get a city by argument in order&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Wwtime-city&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;what&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;wwtime&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;gmaps_api_key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;local&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Paris&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;France&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;city&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;file_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;templates/fr_wwtime.j2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Get a city by argument set in brain:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Wwtime-city-boton&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;signals&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;order&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;heure&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;boston&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;neurons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;wwtime&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;gmaps_api_key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;city&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;boston&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;MA&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;local&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Paris&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;France&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;file_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;templates/fr_wwtime.j2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;template&quot;&gt;template&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-jinja&quot; data-lang=&quot;jinja&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;OK&quot;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    Sir, in &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;city.arg&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;, it is &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;city.time.hour&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; hour and &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;city.time.minute&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; minutes, whereas here, it's &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;local.time.hour&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; hour and &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;local.time.minute&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt; minutes
+    Le timezone est &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;city.timezonename&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    Sorry sir, but I don't know
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;see more example in the &lt;a href=&quot;https://github.com/bacardi55/kalliope-wwtime/blob/master/samples/&quot;&gt;sample directory&lt;/a&gt;&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="gmaps" /><summary type="html">Introduction</summary></entry><entry><title type="html">An Uber neuron for Kalliope</title><link href="http://localhost:4000/2017/03/18/an-uber-neuron-for-kalliope.html" rel="alternate" type="text/html" title="An Uber neuron for Kalliope" /><published>2017-03-18T14:30:00+01:00</published><updated>2017-03-18T14:30:00+01:00</updated><id>http://localhost:4000/2017/03/18/an-uber-neuron-for-kalliope</id><content type="html" xml:base="http://localhost:4000/2017/03/18/an-uber-neuron-for-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Today I realized that I didn’t write about a neuron I did for Kalliopé to interact with the &lt;a href=&quot;https://developer.uber.com/&quot;&gt;Uber API&lt;/a&gt; that I’ve done a couple of weeks following a “silly bet” with my brother after I’ve done the &lt;a href=&quot;https://github.com/bacardi55/kalliope-gmaps&quot;&gt;Google maps neuron&lt;/a&gt;&lt;/p&gt;
 
@@ -173,11 +350,11 @@
 
 &lt;p&gt;see more example in the &lt;a href=&quot;https://github.com/bacardi55/kalliope-uber/blob/master/samples/&quot;&gt;sample directory&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;enjoy!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automatio" /><category term="uber" /><summary type="html">Introduction</summary></entry><entry><title type="html">Switching back to static html</title><link href="http://bacardi55.org/2017/03/18/switching-back-to-static-html.html" rel="alternate" type="text/html" title="Switching back to static html" /><published>2017-03-18T05:00:00+01:00</published><updated>2017-03-18T05:00:00+01:00</updated><id>http://bacardi55.org/2017/03/18/switching-back-to-static-html</id><content type="html" xml:base="http://bacardi55.org/2017/03/18/switching-back-to-static-html.html">&lt;p&gt;Quick note to say I’ve switched back to static html site, managed (this time) by &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt; :).&lt;/p&gt;
+&lt;p&gt;enjoy!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automatio" /><category term="uber" /><summary type="html">Introduction</summary></entry><entry><title type="html">Switching back to static html</title><link href="http://localhost:4000/2017/03/18/switching-back-to-static-html.html" rel="alternate" type="text/html" title="Switching back to static html" /><published>2017-03-18T05:00:00+01:00</published><updated>2017-03-18T05:00:00+01:00</updated><id>http://localhost:4000/2017/03/18/switching-back-to-static-html</id><content type="html" xml:base="http://localhost:4000/2017/03/18/switching-back-to-static-html.html">&lt;p&gt;Quick note to say I’ve switched back to static html site, managed (this time) by &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt; :).&lt;/p&gt;
 
 &lt;p&gt;The reason behind that is simple: it’s way easier to maintain and &lt;strong&gt;secure&lt;/strong&gt; a stack for html files than php or other :).&lt;/p&gt;
 
-&lt;p&gt;And even though I enabled the markdown text format, I still feel more comfortable writing in vim and commiting blog post like code via git (:&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="blabla" /><summary type="html">Quick note to say I’ve switched back to static html site, managed (this time) by jekyll :).</summary></entry><entry><title type="html">Managing a shopping list with Kalliope</title><link href="http://bacardi55.org/2017/03/16/managing-a-shopping-list-with-kalliope.html" rel="alternate" type="text/html" title="Managing a shopping list with Kalliope" /><published>2017-03-16T00:00:00+01:00</published><updated>2017-03-16T00:00:00+01:00</updated><id>http://bacardi55.org/2017/03/16/managing-a-shopping-list-with-kalliope</id><content type="html" xml:base="http://bacardi55.org/2017/03/16/managing-a-shopping-list-with-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;And even though I enabled the markdown text format, I still feel more comfortable writing in vim and commiting blog post like code via git (:&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="blabla" /><summary type="html">Quick note to say I’ve switched back to static html site, managed (this time) by jekyll :).</summary></entry><entry><title type="html">Managing a shopping list with Kalliope</title><link href="http://localhost:4000/2017/03/16/managing-a-shopping-list-with-kalliope.html" rel="alternate" type="text/html" title="Managing a shopping list with Kalliope" /><published>2017-03-16T00:00:00+01:00</published><updated>2017-03-16T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/16/managing-a-shopping-list-with-kalliope</id><content type="html" xml:base="http://localhost:4000/2017/03/16/managing-a-shopping-list-with-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;This neuron allow &lt;a href=&quot;http://github.com/kalliope-project/kalliope&quot;&gt;Kalliope&lt;/a&gt; to manage todolists. It leverages the &lt;a href=&quot;http://todotxt.com&quot;&gt;todotxt&lt;/a&gt; methodology and rules.&lt;/p&gt;
 
@@ -576,7 +753,7 @@
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;s&quot;&gt;say_template&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{added_task.task}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;has&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;been&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;added&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;grocery&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;list&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;As usual, the &lt;a href=&quot;https://github.com/bacardi55/kalliope-todotxt/tree/master/samples&quot;&gt;sample directory&lt;/a&gt; contains more example of brains and templates.&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="todotxt" /><summary type="html">Introduction</summary></entry><entry><title type="html">Entering the domotic game</title><link href="http://bacardi55.org/2017/03/15/entering-the-domotic-game.html" rel="alternate" type="text/html" title="Entering the domotic game" /><published>2017-03-15T00:00:00+01:00</published><updated>2017-03-15T00:00:00+01:00</updated><id>http://bacardi55.org/2017/03/15/entering-the-domotic-game</id><content type="html" xml:base="http://bacardi55.org/2017/03/15/entering-the-domotic-game.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;As usual, the &lt;a href=&quot;https://github.com/bacardi55/kalliope-todotxt/tree/master/samples&quot;&gt;sample directory&lt;/a&gt; contains more example of brains and templates.&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="todotxt" /><summary type="html">Introduction</summary></entry><entry><title type="html">Entering the domotic game</title><link href="http://localhost:4000/2017/03/15/entering-the-domotic-game.html" rel="alternate" type="text/html" title="Entering the domotic game" /><published>2017-03-15T00:00:00+01:00</published><updated>2017-03-15T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/15/entering-the-domotic-game</id><content type="html" xml:base="http://localhost:4000/2017/03/15/entering-the-domotic-game.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;So far, most of the things I do with Kalliope could be considered as not really domitic (maybe more domogeek ^^).&lt;/p&gt;
 
@@ -699,13 +876,13 @@
 
 &lt;p&gt;As I said above, there are a lot to be able to do: set on/off devices, get / set scenes and groups, … A lot of fun to have marrying Kalliopé and domoticz :)&lt;/p&gt;
 
-&lt;p&gt;Stay tuned!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="domoticz" /><summary type="html">Introduction</summary></entry><entry><title type="html">Update Linux Clock While Travelling</title><link href="http://bacardi55.org/2017/03/07/update-linux-clock-while-travelling.html" rel="alternate" type="text/html" title="Update Linux Clock While Travelling" /><published>2017-03-07T00:00:00+01:00</published><updated>2017-03-07T00:00:00+01:00</updated><id>http://bacardi55.org/2017/03/07/update-linux-clock-while-travelling</id><content type="html" xml:base="http://bacardi55.org/2017/03/07/update-linux-clock-while-travelling.html">&lt;hr /&gt;
+&lt;p&gt;Stay tuned!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="domoticz" /><summary type="html">Introduction</summary></entry><entry><title type="html">Update Linux Clock While Travelling</title><link href="http://localhost:4000/2017/03/07/update-linux-clock-while-travelling.html" rel="alternate" type="text/html" title="Update Linux Clock While Travelling" /><published>2017-03-07T00:00:00+01:00</published><updated>2017-03-07T00:00:00+01:00</updated><id>http://localhost:4000/2017/03/07/update-linux-clock-while-travelling</id><content type="html" xml:base="http://localhost:4000/2017/03/07/update-linux-clock-while-travelling.html">&lt;hr /&gt;
 &lt;p&gt;layout: post&lt;br /&gt;
 title: Update linux clock when travelling&lt;br /&gt;
 subtitle: “”&lt;br /&gt;
 categorie: “tips”&lt;/p&gt;
 
-&lt;p&gt;Cool tool if you often travel and that need to change time/date : &lt;a href=&quot;https://github.com/cdown/tzupdate&quot;&gt;tzupdate&lt;/a&gt;&lt;/p&gt;</content><author><name>bacardi55</name></author><summary type="html">layout: post title: Update linux clock when travelling subtitle: “” categorie: “tips”</summary></entry><entry><title type="html">Todotxt, a neuron to manage todolist compatible with todotxt format!</title><link href="http://bacardi55.org/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html" rel="alternate" type="text/html" title="Todotxt, a neuron to manage todolist compatible with todotxt format!" /><published>2017-02-28T00:00:00+01:00</published><updated>2017-02-28T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format</id><content type="html" xml:base="http://bacardi55.org/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Cool tool if you often travel and that need to change time/date : &lt;a href=&quot;https://github.com/cdown/tzupdate&quot;&gt;tzupdate&lt;/a&gt;&lt;/p&gt;</content><author><name>bacardi55</name></author><summary type="html">layout: post title: Update linux clock when travelling subtitle: “” categorie: “tips”</summary></entry><entry><title type="html">Todotxt, a neuron to manage todolist compatible with todotxt format!</title><link href="http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html" rel="alternate" type="text/html" title="Todotxt, a neuron to manage todolist compatible with todotxt format!" /><published>2017-02-28T00:00:00+01:00</published><updated>2017-02-28T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format</id><content type="html" xml:base="http://localhost:4000/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;As promised in my &lt;a href=&quot;/2017/02/28/todotxt-a-neuron-to-manage-todolist-compatible-with-todotxt-format.html&quot;&gt;todotxt neuron post&lt;/a&gt;, here is a post about how I managed my todolist via &lt;a href=&quot;https://kalliope-project.github.io/&quot;&gt;Kalliope&lt;/a&gt; !&lt;/p&gt;
 
@@ -936,7 +1113,7 @@ optional arguments:
           &lt;span class=&quot;s&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;script/mail_grocery.sh&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;And you should be all set !&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home" /><category term="automotation" /><category term="todotxt" /><summary type="html">Introduction</summary></entry><entry><title type="html">Monitor and restart Kalliope via a led and a push button</title><link href="http://bacardi55.org/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button.html" rel="alternate" type="text/html" title="Monitor and restart Kalliope via a led and a push button" /><published>2017-02-24T00:00:00+01:00</published><updated>2017-02-24T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button</id><content type="html" xml:base="http://bacardi55.org/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;And you should be all set !&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home" /><category term="automotation" /><category term="todotxt" /><summary type="html">Introduction</summary></entry><entry><title type="html">Monitor and restart Kalliope via a led and a push button</title><link href="http://localhost:4000/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button.html" rel="alternate" type="text/html" title="Monitor and restart Kalliope via a led and a push button" /><published>2017-02-24T00:00:00+01:00</published><updated>2017-02-24T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button</id><content type="html" xml:base="http://localhost:4000/2017/02/24/monitor-and-restart-kalliope-via-a-led-and-a-push-button.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Tonight, I wanted to play a bit with my old raspberry pi B+ that I wasn’t using anymore.&lt;/p&gt;
 
@@ -1020,11 +1197,11 @@ optional arguments:
            └─8349 /usr/bin/python /home/pi/scripts/emergency_button.py&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;And normally everything should go smoothly, and each time the red led is on, just press the button to restart the whole shebang!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Ssmtp and password containing</title><link href="http://bacardi55.org/2017/02/23/ssmtp-password-with.html" rel="alternate" type="text/html" title="Ssmtp and password containing" /><published>2017-02-23T00:00:00+01:00</published><updated>2017-02-23T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/23/ssmtp-password-with</id><content type="html" xml:base="http://bacardi55.org/2017/02/23/ssmtp-password-with.html">&lt;p&gt;Quick note as a “note to self”, do &lt;em&gt;not&lt;/em&gt; use # in AuthPass with ssmtp!&lt;/p&gt;
+&lt;p&gt;And normally everything should go smoothly, and each time the red led is on, just press the button to restart the whole shebang!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Ssmtp and password containing</title><link href="http://localhost:4000/2017/02/23/ssmtp-password-with.html" rel="alternate" type="text/html" title="Ssmtp and password containing" /><published>2017-02-23T00:00:00+01:00</published><updated>2017-02-23T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/23/ssmtp-password-with</id><content type="html" xml:base="http://localhost:4000/2017/02/23/ssmtp-password-with.html">&lt;p&gt;Quick note as a “note to self”, do &lt;em&gt;not&lt;/em&gt; use # in AuthPass with ssmtp!&lt;/p&gt;
 
 &lt;p&gt;https://bugs.debian.org/cgi-bin/pkgreport.cgi?repeatmerged=no&amp;amp;src=ssmtp#_0_3_4&lt;/p&gt;
 
-&lt;p&gt;https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=544018&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="ssmtp" /><category term="tips" /><summary type="html">Quick note as a “note to self”, do not use # in AuthPass with ssmtp!</summary></entry><entry><title type="html">Opening Tv show episode via Kalliope</title><link href="http://bacardi55.org/2017/02/22/opening-tv-show-episode-via-kalliope.html" rel="alternate" type="text/html" title="Opening Tv show episode via Kalliope" /><published>2017-02-22T00:00:00+01:00</published><updated>2017-02-22T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/22/opening-tv-show-episode-via-kalliope</id><content type="html" xml:base="http://bacardi55.org/2017/02/22/opening-tv-show-episode-via-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=544018&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="ssmtp" /><category term="tips" /><summary type="html">Quick note as a “note to self”, do not use # in AuthPass with ssmtp!</summary></entry><entry><title type="html">Opening Tv show episode via Kalliope</title><link href="http://localhost:4000/2017/02/22/opening-tv-show-episode-via-kalliope.html" rel="alternate" type="text/html" title="Opening Tv show episode via Kalliope" /><published>2017-02-22T00:00:00+01:00</published><updated>2017-02-22T00:00:00+01:00</updated><id>http://localhost:4000/2017/02/22/opening-tv-show-episode-via-kalliope</id><content type="html" xml:base="http://localhost:4000/2017/02/22/opening-tv-show-episode-via-kalliope.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Today, a quick blog post about something I’ve put in place when I started playing with Kalliopé: asking kalliope to read videos from me.&lt;/p&gt;
 
@@ -1150,57 +1327,4 @@ The script would then look over ssh to find the file name and then run a request
 
 &lt;p&gt;Maybe I should PR it again to add the ability to pass unlimited number of arguments that will be send to the shell script … But that then raise questions of orders, options, …&lt;/p&gt;
 
-&lt;p&gt;I hope this will work for you as well so you will be able to fire tv show episode without looking at your remote!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="kodi" /><summary type="html">Introduction</summary></entry><entry><title type="html">Kalliope system status neuron</title><link href="http://bacardi55.org/2017/02/21/kalliope-system-status-neuron.html" rel="alternate" type="text/html" title="Kalliope system status neuron" /><published>2017-02-21T00:00:00+01:00</published><updated>2017-02-21T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/21/kalliope-system-status-neuron</id><content type="html" xml:base="http://bacardi55.org/2017/02/21/kalliope-system-status-neuron.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Couple of days ago, I created a very simple neuron to retrieve some system data and have an idea of the system kalliope runs on. It was in the same idea of the &lt;a href=&quot;node/31&quot;&gt;poorsman loganalyser I talked about before&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In all honesty, most credits goes to &lt;a href=&quot;https://github.com/edouardpoitras/jasper-status&quot;&gt;this github repository&lt;/a&gt; I found that did almost all the job for me.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-does-it-do-&quot;&gt;What does it do ?&lt;/h2&gt;
-
-&lt;p&gt;So far, it returns the following variable that can then be used in a template or say_template:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;running_since&lt;/li&gt;
-  &lt;li&gt;os: OS name&lt;/li&gt;
-  &lt;li&gt;os_version: Kernel version&lt;/li&gt;
-  &lt;li&gt;system_name: Name of your host&lt;/li&gt;
-  &lt;li&gt;system_nb_core: Number of core&lt;/li&gt;
-  &lt;li&gt;cpu: % of CPU usage&lt;/li&gt;
-  &lt;li&gt;memory: % of memory usage&lt;/li&gt;
-  &lt;li&gt;disk: % of disk usage&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Look at the &lt;a href=&quot;https://github.com/bacardi55/kalliope-system-status&quot;&gt;readme&lt;/a&gt; for an up to date list :)&lt;/p&gt;
-
-&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
-
-&lt;p&gt;The usual:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;kalliope install --git-url https://github.com/bacardi55/kalliope-system-status.git&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
-
-&lt;p&gt;Create a brain file like this:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  - name: &lt;span class=&quot;s2&quot;&gt;&quot;System-status&quot;&lt;/span&gt;
-    signals:
-      - order: &lt;span class=&quot;s2&quot;&gt;&quot;Step into analysis mode, please&quot;&lt;/span&gt;
-    neurons:
-      - system_status:
-          say_template: 
-            - &lt;span class=&quot;s2&quot;&gt;&quot;I'm running on , kernel , with  cores.    C P U usage  %  memory usage  %  disk usage  %&quot;&lt;/span&gt;
-          cache: False&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Or create a more complex template :)&lt;/p&gt;
-
-&lt;p&gt;I’ll add more into this, but if you have idea, PR on github or comment on this post :)&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry></feed>
+&lt;p&gt;I hope this will work for you as well so you will be able to fire tv show episode without looking at your remote!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><category term="kodi" /><summary type="html">Introduction</summary></entry></feed>
