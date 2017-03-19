@@ -12,6 +12,23 @@ This page regroups information about [kalliope project](http://github.com/kallio
 - [Kalliope github](http://github.com/kalliope-project/kalliope)
 - [Kalliope gitter chat](https://gitter.im/kalliope-project/Lobby)
 
+
+### See Kalliopé in action
+
+*Videos are in French but I'll add subtitles to them shortly, maybe I'll do an English version later on…*
+
+- [Uber neuron](https://www.youtube.com/watch?v=pnb1knix004)
+- [Gmaps neuron](https://www.youtube.com/watch?v=l8pi3Puzliw)
+- [TodoTxt neuron](https://www.youtube.com/watch?v=DLmaspBVd2A)
+- [MPD / Mopidy neuron](https://www.youtube.com/watch?v=Zdn7CUQlV1E)
+
+TODO video
+- [ ] reminder / repeat
+- [ ] wwtime
+- [ ] domoticz integration
+- …
+
+
 ### My neurons for Kalliopé
 
 <ul>
@@ -45,6 +62,3 @@ This page regroups information about [kalliope project](http://github.com/kallio
 </ul>
 
 
-### See Kalliopé in action
-
-Coming soon
