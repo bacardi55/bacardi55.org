@@ -54,6 +54,11 @@ neurons:
     url: https://github.com/bacardi55/kalliope-web-scraper
     description: Get data from site without API or RSS
 
+  - name: World wide time
+    status: working
+    url: https://github.com/bacardi55/kalliope-wwtime
+    description: Get the time of any city
+
 scripts:
   - name: Emergency button
     url: https://github.com/bacardi55/kalliope-starter55/blob/master/script/emergency_button.py
