@@ -12,7 +12,7 @@ This page regroups information about [kalliope project](http://github.com/kallio
 - [Kalliope github](http://github.com/kalliope-project/kalliope)
 - [Kalliope gitter chat](https://gitter.im/kalliope-project/Lobby)
 
-### My neurons Kalliopé 
+### My neurons for Kalliopé
 
 <ul>
 {% for neuron in site.data.my_kalliope.neurons %}
@@ -23,7 +23,7 @@ This page regroups information about [kalliope project](http://github.com/kallio
 {% endfor %}
 </ul>
 
-### My script for Kalliopé
+### My scripts for Kalliopé
 <ul>
 {% for script in site.data.my_kalliope.scripts %}
     <li>
