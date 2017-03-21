@@ -17,15 +17,18 @@ This page regroups information about [kalliope project](http://github.com/kallio
 
 *Videos are in French but I'll add subtitles to them shortly, maybe I'll do an English version later on…*
 
-- [Uber neuron](https://www.youtube.com/watch?v=pnb1knix004)
-- [Gmaps neuron](https://www.youtube.com/watch?v=l8pi3Puzliw)
-- [TodoTxt neuron](https://www.youtube.com/watch?v=DLmaspBVd2A)
-- [MPD / Mopidy neuron](https://www.youtube.com/watch?v=Zdn7CUQlV1E)
+- [Uber neuron](https://www.youtube.com/watch?v=pnb1knix004) (*with english subtile*)
+- [Gmaps neuron](https://www.youtube.com/watch?v=l8pi3Puzliw) (*with english subtile*)
+- [TodoTxt neuron](https://www.youtube.com/watch?v=DLmaspBVd2A) (*with english subtile*)
+- [MPD / Mopidy neuron](https://www.youtube.com/watch?v=Zdn7CUQlV1E) (*with english subtile*)
+- [repeat](https://www.youtube.com/watch?v=lNfpX0MYfFI&list=PLDc8cUmeFkpKdErR5iYTkGJ1-4A05zHIi&index=4) (*with english subtile*)
+- [google calendar](https://www.youtube.com/watch?v=4Xp2cJH2p2s&list=PLDc8cUmeFkpKdErR5iYTkGJ1-4A05zHIi&index=1) (*with english subtile*)
+- [web scraper](https://www.youtube.com/watch?v=PxjtLvpvEFY&list=PLDc8cUmeFkpKdErR5iYTkGJ1-4A05zHIi&index=3) (*with english subtile*)
 
 TODO video
-- [ ] reminder / repeat
-- [ ] wwtime
-- [ ] domoticz integration
+- reminder
+- wwtime
+- domoticz integration
 - …
 
 
