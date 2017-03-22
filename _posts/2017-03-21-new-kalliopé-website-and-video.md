@@ -1,6 +1,6 @@
 ---
 layout: post
-title: New kalliopé website and video
+title: Kalliopé 4.3 and new kalliopé website and videos! 
 subtitle: to attract a bigger community
 tags: kalliope
 ---
