@@ -57,10 +57,15 @@ TODO video
 <!-- This loops through the paginated posts -->
 <ul>
 {% for post in site.posts %}
-  <li>
-    {{ post.date | date: "%b %-d, %Y" }} 
-    <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-  </li>
+  {% for tag in post.tags %}
+    {% if tag == "kalliope" %}
+      <li>
+        {{ post.date | date: "%b %-d, %Y" }} 
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </li>
+      {{ break }}
+    {% endif %}
+  {% endfor %}
 {% endfor %}
 </ul>
 
