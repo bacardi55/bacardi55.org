@@ -39,6 +39,8 @@ gems:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-youtube
+  - jekyll/tagging
+  - jekyll-tagging-related_posts
 
 exclude:
   - Gemfile
