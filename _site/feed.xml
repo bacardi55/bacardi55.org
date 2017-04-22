@@ -1,5 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="http://bacardi55.org/feed.xml" rel="self" type="application/atom+xml" /><link href="http://bacardi55.org/" rel="alternate" type="text/html" /><updated>2017-03-22T19:04:09+01:00</updated><id>http://bacardi55.org/</id><title type="html">Bacardi55’s random notes</title><subtitle>This is a small place on the Internet where I talk about stuff…
-</subtitle><author><name>bacardi55</name></author><entry><title type="html">Kalliopé 4.3 and new kalliopé website and videos!</title><link href="http://bacardi55.org/2017/03/21/new-kalliop%C3%A9-website-and-video.html" rel="alternate" type="text/html" title="Kalliopé 4.3 and new kalliopé website and videos!" /><published>2017-03-21T00:00:00+01:00</published><updated>2017-03-21T00:00:00+01:00</updated><id>http://bacardi55.org/2017/03/21/new-kalliop%C3%A9-website-and-video</id><content type="html" xml:base="http://bacardi55.org/2017/03/21/new-kalliop%C3%A9-website-and-video.html">&lt;p&gt;Today, a quick note to indicate some improvement in Kalliopé with the v4.3 version and it’s documentation!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.2">Jekyll</generator><link href="http://bacardi55.org/feed.xml" rel="self" type="application/atom+xml" /><link href="http://bacardi55.org/" rel="alternate" type="text/html" /><updated>2017-04-22T20:47:15+02:00</updated><id>http://bacardi55.org/</id><title type="html">Bacardi55’s random notes</title><subtitle>This is a small place on the Internet where I talk about stuff…
+</subtitle><author><name>bacardi55</name></author><entry><title type="html">Running feed2toot in a docker container</title><link href="http://bacardi55.org/2017/04/22/running-feed2toot-in-a-docker-container.html" rel="alternate" type="text/html" title="Running feed2toot in a docker container" /><published>2017-04-22T00:00:00+02:00</published><updated>2017-04-22T00:00:00+02:00</updated><id>http://bacardi55.org/2017/04/22/running-feed2toot-in-a-docker-container</id><content type="html" xml:base="http://bacardi55.org/2017/04/22/running-feed2toot-in-a-docker-container.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Today, a very quick blog post on a how to install &lt;a href=&quot;https://gitlab.com/chaica/feed2toot&quot;&gt;feed2toot&lt;/a&gt; in a docker container. Feed2toot is a python application that will send toot on Mastodon for each item of an RSS feed.&lt;/p&gt;
+
+&lt;p&gt;If you want to install Mastodon, I suggest you read here:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Docker-Guide.md&quot;&gt;Offical documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/deploying-mastodon-on-digital-ocean-f54b94c7f5b8&quot;&gt;Intall guide for Digital ocean&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://psychedeli.cat/mastodon/&quot;&gt;French intall guide on Debian&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;if you want to install &lt;a href=&quot;https://gitlab.com/chaica/feed2toot&quot;&gt;feed2toot&lt;/a&gt; in a container to be able to create toot from an RSS feed, then keep reading :).&lt;/p&gt;
+
+&lt;h2 id=&quot;create-the-docker-image&quot;&gt;Create the docker image&lt;/h2&gt;
+
+&lt;h3 id=&quot;get-the-files&quot;&gt;Get the files&lt;/h3&gt;
+
+&lt;p&gt;You can start with my repo as a base:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://git.bacardi55.org/bacardi55/docker-feed2toot.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;build-the-container-image&quot;&gt;Build the container image&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd docker-feed2toot
+docker build -t b55/feed2toot .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;You can change the tag name :)&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;configure-feed2toot&quot;&gt;Configure feed2toot&lt;/h2&gt;
+
+&lt;p&gt;Edit the &lt;code class=&quot;highlighter-rouge&quot;&gt;conf/feed2toot.ini&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;conf/rsslinks.txt&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;conf/hashtags.txt&lt;/code&gt; files as describe in the &lt;a href=&quot;&quot;&gt;official documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The current release needs a hashtags file, even empty! It will become optional in the next release&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;run&quot;&gt;Run&lt;/h2&gt;
+
+&lt;h3 id=&quot;get-your-credential-first&quot;&gt;Get your credential first&lt;/h3&gt;
+
+&lt;p&gt;Then, register your application with your mastodon account:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run --rm -v &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;/conf:/etc/feed2toot -it b55/feed2toot register_feed2toot_app
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It will ask your password (but won’t save it) to generate token files.&lt;/p&gt;
+
+&lt;h3 id=&quot;test-the-first-run&quot;&gt;Test the first run&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run --rm -v &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;/conf:/etc/feed2toot b55/feed2toot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Go to your user mastodon page, you should see the toot generated :)&lt;/p&gt;
+
+&lt;h3 id=&quot;automate&quot;&gt;Automate&lt;/h3&gt;
+
+&lt;p&gt;To avoid launching the app manually, let’s put a simple task in our crontab:&lt;/p&gt;
+
+&lt;p&gt;Open the crontab file: &lt;code class=&quot;highlighter-rouge&quot;&gt;crontab -e&lt;/code&gt; and insert this line:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@hourly docker run --rm -v /path/to/conf:/etc/feed2toot b55/feed2toot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And you should be good to go!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="docker" /><category term="mastodon" /><category term="feed2toot" /><summary type="html">Introduction</summary></entry><entry><title type="html">Kalliopé 4.3 and new kalliopé website and videos!</title><link href="http://bacardi55.org/2017/03/21/new-kalliop%C3%A9-website-and-video.html" rel="alternate" type="text/html" title="Kalliopé 4.3 and new kalliopé website and videos!" /><published>2017-03-21T00:00:00+01:00</published><updated>2017-03-21T00:00:00+01:00</updated><id>http://bacardi55.org/2017/03/21/new-kalliop%C3%A9-website-and-video</id><content type="html" xml:base="http://bacardi55.org/2017/03/21/new-kalliop%C3%A9-website-and-video.html">&lt;p&gt;Today, a quick note to indicate some improvement in Kalliopé with the v4.3 version and it’s documentation!&lt;/p&gt;
 
 &lt;p&gt;Quick reminder &lt;a href=&quot;https://kalliope-project.github.io/&quot;&gt;Kalliopé&lt;/a&gt; is personal vocal assistant, so you act like Tony Start… Well almost… :) Well… At least you’ll be able to:&lt;/p&gt;
 &lt;ul&gt;
@@ -1220,8 +1288,4 @@ optional arguments:
            └─8349 /usr/bin/python /home/pi/scripts/emergency_button.py&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;And normally everything should go smoothly, and each time the red led is on, just press the button to restart the whole shebang!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry><entry><title type="html">Ssmtp and password containing</title><link href="http://bacardi55.org/2017/02/23/ssmtp-password-with.html" rel="alternate" type="text/html" title="Ssmtp and password containing" /><published>2017-02-23T00:00:00+01:00</published><updated>2017-02-23T00:00:00+01:00</updated><id>http://bacardi55.org/2017/02/23/ssmtp-password-with</id><content type="html" xml:base="http://bacardi55.org/2017/02/23/ssmtp-password-with.html">&lt;p&gt;Quick note as a “note to self”, do &lt;em&gt;not&lt;/em&gt; use # in AuthPass with ssmtp!&lt;/p&gt;
-
-&lt;p&gt;https://bugs.debian.org/cgi-bin/pkgreport.cgi?repeatmerged=no&amp;amp;src=ssmtp#_0_3_4&lt;/p&gt;
-
-&lt;p&gt;https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=544018&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="ssmtp" /><category term="tips" /><summary type="html">Quick note as a “note to self”, do not use # in AuthPass with ssmtp!</summary></entry></feed>
+&lt;p&gt;And normally everything should go smoothly, and each time the red led is on, just press the button to restart the whole shebang!&lt;/p&gt;</content><author><name>bacardi55</name></author><category term="kalliope" /><category term="home_automation" /><summary type="html">Introduction</summary></entry></feed>
